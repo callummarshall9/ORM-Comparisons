@@ -1,0 +1,429 @@
+// Validating benchmarks:
+// ***** BenchmarkRunner: Start   *****
+// ***** Found 9 benchmark(s) in total *****
+// ***** Building 1 exe(s) in Parallel: Start   *****
+// start dotnet  restore --nodeReuse:false /p:UseSharedCompilation=false /p:Deterministic=true /p:Optimize=true /p:ArtifactsPath="/home/cmarshall/source/repos/ORM-Fun/ORM_Benchmarks/bin/Release/net9.0/ORM_Benchmarks-DefaultJob-1/" /p:OutDir="/home/cmarshall/source/repos/ORM-Fun/ORM_Benchmarks/bin/Release/net9.0/ORM_Benchmarks-DefaultJob-1/bin/Release/net9.0/" /p:OutputPath="/home/cmarshall/source/repos/ORM-Fun/ORM_Benchmarks/bin/Release/net9.0/ORM_Benchmarks-DefaultJob-1/bin/Release/net9.0/" /p:PublishDir="/home/cmarshall/source/repos/ORM-Fun/ORM_Benchmarks/bin/Release/net9.0/ORM_Benchmarks-DefaultJob-1/publish/" in /home/cmarshall/source/repos/ORM-Fun/ORM_Benchmarks/bin/Release/net9.0/ORM_Benchmarks-DefaultJob-1
+// command took 0.44 sec and exited with 0
+// start dotnet  build -c Release --no-restore --nodeReuse:false /p:UseSharedCompilation=false /p:Deterministic=true /p:Optimize=true /p:ArtifactsPath="/home/cmarshall/source/repos/ORM-Fun/ORM_Benchmarks/bin/Release/net9.0/ORM_Benchmarks-DefaultJob-1/" /p:OutDir="/home/cmarshall/source/repos/ORM-Fun/ORM_Benchmarks/bin/Release/net9.0/ORM_Benchmarks-DefaultJob-1/bin/Release/net9.0/" /p:OutputPath="/home/cmarshall/source/repos/ORM-Fun/ORM_Benchmarks/bin/Release/net9.0/ORM_Benchmarks-DefaultJob-1/bin/Release/net9.0/" /p:PublishDir="/home/cmarshall/source/repos/ORM-Fun/ORM_Benchmarks/bin/Release/net9.0/ORM_Benchmarks-DefaultJob-1/publish/" --output "/home/cmarshall/source/repos/ORM-Fun/ORM_Benchmarks/bin/Release/net9.0/ORM_Benchmarks-DefaultJob-1/bin/Release/net9.0/" in /home/cmarshall/source/repos/ORM-Fun/ORM_Benchmarks/bin/Release/net9.0/ORM_Benchmarks-DefaultJob-1
+// command took 2.36 sec and exited with 0
+// ***** Done, took 00:00:02 (2.83 sec)   *****
+// Found 9 benchmarks:
+//   EFVsNHibernate.EF_RetrieveAll: DefaultJob
+//   EFVsNHibernate.NHibernate_RetrieveAll: DefaultJob
+//   EFVsNHibernate.Dapper_RetrieveAll: DefaultJob
+//   EFVsNHibernate.EF_RetrieveById: DefaultJob
+//   EFVsNHibernate.NHibernate_RetrieveById: DefaultJob
+//   EFVsNHibernate.Dapper_RetrieveById: DefaultJob
+//   EFVsNHibernate.EF_AddRecord: DefaultJob
+//   EFVsNHibernate.NHibernate_AddRecord: DefaultJob
+//   EFVsNHibernate.Dapper_AddRecord: DefaultJob
+
+// **************************
+// Benchmark: EFVsNHibernate.EF_RetrieveAll: DefaultJob
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet ORM_Benchmarks-DefaultJob-1.dll --anonymousPipes 158 159 --benchmarkName MyBenchmarks.EFVsNHibernate.EF_RetrieveAll --job Default --benchmarkId 0 in /home/cmarshall/source/repos/ORM-Fun/ORM_Benchmarks/bin/Release/net9.0/ORM_Benchmarks-DefaultJob-1/bin/Release/net9.0
+// Failed to set up high priority (Permission denied). In order to run benchmarks with high priority, make sure you have the right permissions.
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.15.6
+// Runtime=.NET 9.0.10 (9.0.10, 9.0.1025.47515), X64 RyuJIT x86-64-v3
+// GC=Concurrent Workstation
+// HardwareIntrinsics=AVX2+BMI1+BMI2+F16C+FMA+LZCNT+MOVBE,AVX,SSE3+SSSE3+SSE4.1+SSE4.2+POPCNT,X86Base+SSE+SSE2,AES+PCLMUL,AvxVnni,SERIALIZE VectorSize=256
+// Job: DefaultJob
+
+Starting Entity Framework SQL Server container...
+[testcontainers.org 00:00:00.04] Connected to Docker:
+  Host: unix:///var/run/docker.sock
+  Server Version: 29.0.1
+  Kernel Version: 6.14.0-35-generic
+  API Version: 1.52
+  Operating System: Ubuntu 24.04.3 LTS
+  Total Memory: 62.60 GB
+[testcontainers.org 00:00:00.10] Docker container 25562bbd7660 created
+[testcontainers.org 00:00:00.12] Start Docker container 25562bbd7660
+[testcontainers.org 00:00:00.26] Wait for Docker container 25562bbd7660 to complete readiness checks
+[testcontainers.org 00:00:00.26] Docker container 25562bbd7660 ready
+[testcontainers.org 00:00:00.28] Docker container 042ea7e00cfb created
+[testcontainers.org 00:00:00.28] Start Docker container 042ea7e00cfb
+[testcontainers.org 00:00:00.36] Wait for Docker container 042ea7e00cfb to complete readiness checks
+[testcontainers.org 00:00:00.36] Execute "/bin/sh -c find /opt/mssql-tools*/bin/sqlcmd -type f -print -quit" at Docker container 042ea7e00cfb
+[testcontainers.org 00:00:00.40] Execute "/opt/mssql-tools18/bin/sqlcmd -C -Q SELECT 1;" at Docker container 042ea7e00cfb
+[testcontainers.org 00:00:02.96] Docker container 042ea7e00cfb ready
+EF Container started: Server=127.0.0.1,32812;Database=master;User Id=sa;Password=YourStrong@Passw0rd;TrustServerCertificate=True
+Starting NHibernate SQL Server container...
+[testcontainers.org 00:00:03.18] Docker container 9ba344243e37 created
+[testcontainers.org 00:00:03.18] Start Docker container 9ba344243e37
+[testcontainers.org 00:00:03.26] Wait for Docker container 9ba344243e37 to complete readiness checks
+[testcontainers.org 00:00:03.26] Execute "/bin/sh -c find /opt/mssql-tools*/bin/sqlcmd -type f -print -quit" at Docker container 9ba344243e37
+[testcontainers.org 00:00:03.30] Execute "/opt/mssql-tools18/bin/sqlcmd -C -Q SELECT 1;" at Docker container 9ba344243e37
+[testcontainers.org 00:00:05.83] Docker container 9ba344243e37 ready
+NH Container started: Server=127.0.0.1,32813;Database=master;User Id=sa;Password=YourStrong@Passw0rd;TrustServerCertificate=True
+Starting Dapper SQL Server container...
+[testcontainers.org 00:00:05.94] Docker container c5ff08f49f0d created
+[testcontainers.org 00:00:05.94] Start Docker container c5ff08f49f0d
+[testcontainers.org 00:00:06.02] Wait for Docker container c5ff08f49f0d to complete readiness checks
+[testcontainers.org 00:00:06.02] Execute "/bin/sh -c find /opt/mssql-tools*/bin/sqlcmd -type f -print -quit" at Docker container c5ff08f49f0d
+[testcontainers.org 00:00:06.05] Execute "/opt/mssql-tools18/bin/sqlcmd -C -Q SELECT 1;" at Docker container c5ff08f49f0d
+[testcontainers.org 00:00:08.58] Docker container c5ff08f49f0d ready
+Dapper Container started: Server=127.0.0.1,32814;Database=master;User Id=sa;Password=YourStrong@Passw0rd;TrustServerCertificate=True
+Setting up Entity Framework...
+Seeded 100 products for EF
+Setting up NHibernate...
+Seeded 100 products for NHibernate
+Setting up Dapper...
+Seeded 100 products for Dapper
+Setup complete!
+OverheadJitting  1: 1 op, 127867.00 ns, 127.8670 us/op
+WorkloadJitting  1: 1 op, 65899431.00 ns, 65.8994 ms/op
+
+WorkloadPilot    1: 2 op, 23118312.00 ns, 11.5592 ms/op
+WorkloadPilot    2: 3 op, 3630293.00 ns, 1.2101 ms/op
+WorkloadPilot    3: 4 op, 4492204.00 ns, 1.1231 ms/op
+WorkloadPilot    4: 5 op, 5066412.00 ns, 1.0133 ms/op
+WorkloadPilot    5: 6 op, 6671308.00 ns, 1.1119 ms/op
+WorkloadPilot    6: 7 op, 7064631.00 ns, 1.0092 ms/op
+WorkloadPilot    7: 8 op, 7808684.00 ns, 976.0855 us/op
+WorkloadPilot    8: 9 op, 8480940.00 ns, 942.3267 us/op
+WorkloadPilot    9: 10 op, 8871006.00 ns, 887.1006 us/op
+WorkloadPilot   10: 11 op, 10015238.00 ns, 910.4762 us/op
+WorkloadPilot   11: 12 op, 11839922.00 ns, 986.6602 us/op
+WorkloadPilot   12: 13 op, 10717829.00 ns, 824.4484 us/op
+WorkloadPilot   13: 14 op, 12100744.00 ns, 864.3389 us/op
+WorkloadPilot   14: 15 op, 12711544.00 ns, 847.4363 us/op
+WorkloadPilot   15: 16 op, 12864302.00 ns, 804.0189 us/op
+WorkloadPilot   16: 32 op, 25335048.00 ns, 791.7203 us/op
+WorkloadPilot   17: 64 op, 47548277.00 ns, 742.9418 us/op
+WorkloadPilot   18: 128 op, 94018548.00 ns, 734.5199 us/op
+WorkloadPilot   19: 256 op, 166879849.00 ns, 651.8744 us/op
+WorkloadPilot   20: 512 op, 313173422.00 ns, 611.6668 us/op
+WorkloadPilot   21: 1024 op, 464658237.00 ns, 453.7678 us/op
+WorkloadPilot   22: 2048 op, 536853864.00 ns, 262.1357 us/op
+
+WorkloadWarmup   1: 2048 op, 437885271.00 ns, 213.8112 us/op
+WorkloadWarmup   2: 2048 op, 444064398.00 ns, 216.8283 us/op
+WorkloadWarmup   3: 2048 op, 445382539.00 ns, 217.4719 us/op
+WorkloadWarmup   4: 2048 op, 448725764.00 ns, 219.1044 us/op
+WorkloadWarmup   5: 2048 op, 465267620.00 ns, 227.1815 us/op
+WorkloadWarmup   6: 2048 op, 525704779.00 ns, 256.6918 us/op
+WorkloadWarmup   7: 2048 op, 475609780.00 ns, 232.2313 us/op
+WorkloadWarmup   8: 2048 op, 452563160.00 ns, 220.9781 us/op
+WorkloadWarmup   9: 2048 op, 458443515.00 ns, 223.8494 us/op
+WorkloadWarmup  10: 2048 op, 426620486.00 ns, 208.3108 us/op
+
+// BeforeActualRun
+WorkloadActual   1: 2048 op, 559804248.00 ns, 273.3419 us/op
+WorkloadActual   2: 2048 op, 439295318.00 ns, 214.4997 us/op
+WorkloadActual   3: 2048 op, 422369339.00 ns, 206.2350 us/op
+WorkloadActual   4: 2048 op, 413927016.00 ns, 202.1128 us/op
+WorkloadActual   5: 2048 op, 450861179.00 ns, 220.1471 us/op
+WorkloadActual   6: 2048 op, 469380301.00 ns, 229.1896 us/op
+WorkloadActual   7: 2048 op, 450351961.00 ns, 219.8984 us/op
+WorkloadActual   8: 2048 op, 495572938.00 ns, 241.9790 us/op
+WorkloadActual   9: 2048 op, 448372333.00 ns, 218.9318 us/op
+WorkloadActual  10: 2048 op, 422461210.00 ns, 206.2799 us/op
+WorkloadActual  11: 2048 op, 436821237.00 ns, 213.2916 us/op
+WorkloadActual  12: 2048 op, 431373637.00 ns, 210.6317 us/op
+WorkloadActual  13: 2048 op, 446819245.00 ns, 218.1735 us/op
+WorkloadActual  14: 2048 op, 438128900.00 ns, 213.9301 us/op
+WorkloadActual  15: 2048 op, 452989178.00 ns, 221.1861 us/op
+WorkloadActual  16: 2048 op, 411614266.00 ns, 200.9835 us/op
+WorkloadActual  17: 2048 op, 423292018.00 ns, 206.6856 us/op
+WorkloadActual  18: 2048 op, 445254800.00 ns, 217.4096 us/op
+WorkloadActual  19: 2048 op, 476203114.00 ns, 232.5211 us/op
+WorkloadActual  20: 2048 op, 439625456.00 ns, 214.6609 us/op
+WorkloadActual  21: 2048 op, 486979601.00 ns, 237.7830 us/op
+WorkloadActual  22: 2048 op, 440346489.00 ns, 215.0129 us/op
+WorkloadActual  23: 2048 op, 458881283.00 ns, 224.0631 us/op
+WorkloadActual  24: 2048 op, 483033308.00 ns, 235.8561 us/op
+WorkloadActual  25: 2048 op, 488006470.00 ns, 238.2844 us/op
+WorkloadActual  26: 2048 op, 436574394.00 ns, 213.1711 us/op
+WorkloadActual  27: 2048 op, 430057316.00 ns, 209.9889 us/op
+WorkloadActual  28: 2048 op, 423876872.00 ns, 206.9711 us/op
+WorkloadActual  29: 2048 op, 412454825.00 ns, 201.3940 us/op
+WorkloadActual  30: 2048 op, 412418751.00 ns, 201.3763 us/op
+WorkloadActual  31: 2048 op, 422130591.00 ns, 206.1185 us/op
+WorkloadActual  32: 2048 op, 443073021.00 ns, 216.3442 us/op
+WorkloadActual  33: 2048 op, 437238533.00 ns, 213.4954 us/op
+WorkloadActual  34: 2048 op, 437521969.00 ns, 213.6338 us/op
+WorkloadActual  35: 2048 op, 452787787.00 ns, 221.0878 us/op
+WorkloadActual  36: 2048 op, 425404306.00 ns, 207.7169 us/op
+WorkloadActual  37: 2048 op, 454065744.00 ns, 221.7118 us/op
+WorkloadActual  38: 2048 op, 462925971.00 ns, 226.0381 us/op
+WorkloadActual  39: 2048 op, 456192263.00 ns, 222.7501 us/op
+WorkloadActual  40: 2048 op, 453400342.00 ns, 221.3869 us/op
+WorkloadActual  41: 2048 op, 491941302.00 ns, 240.2057 us/op
+WorkloadActual  42: 2048 op, 505330202.00 ns, 246.7433 us/op
+WorkloadActual  43: 2048 op, 456050582.00 ns, 222.6809 us/op
+WorkloadActual  44: 2048 op, 439237015.00 ns, 214.4712 us/op
+WorkloadActual  45: 2048 op, 442801037.00 ns, 216.2114 us/op
+WorkloadActual  46: 2048 op, 429582839.00 ns, 209.7572 us/op
+WorkloadActual  47: 2048 op, 439619613.00 ns, 214.6580 us/op
+WorkloadActual  48: 2048 op, 413808643.00 ns, 202.0550 us/op
+WorkloadActual  49: 2048 op, 439258596.00 ns, 214.4817 us/op
+WorkloadActual  50: 2048 op, 422670208.00 ns, 206.3819 us/op
+WorkloadActual  51: 2048 op, 430602618.00 ns, 210.2552 us/op
+WorkloadActual  52: 2048 op, 523474150.00 ns, 255.6026 us/op
+WorkloadActual  53: 2048 op, 546633440.00 ns, 266.9109 us/op
+WorkloadActual  54: 2048 op, 487747188.00 ns, 238.1578 us/op
+WorkloadActual  55: 2048 op, 428414018.00 ns, 209.1865 us/op
+WorkloadActual  56: 2048 op, 422288774.00 ns, 206.1957 us/op
+WorkloadActual  57: 2048 op, 423745585.00 ns, 206.9070 us/op
+WorkloadActual  58: 2048 op, 422778266.00 ns, 206.4347 us/op
+WorkloadActual  59: 2048 op, 425705913.00 ns, 207.8642 us/op
+WorkloadActual  60: 2048 op, 424265543.00 ns, 207.1609 us/op
+WorkloadActual  61: 2048 op, 424750239.00 ns, 207.3976 us/op
+WorkloadActual  62: 2048 op, 504633902.00 ns, 246.4033 us/op
+WorkloadActual  63: 2048 op, 415468999.00 ns, 202.8657 us/op
+WorkloadActual  64: 2048 op, 437251373.00 ns, 213.5016 us/op
+WorkloadActual  65: 2048 op, 481797546.00 ns, 235.2527 us/op
+WorkloadActual  66: 2048 op, 510297405.00 ns, 249.1687 us/op
+WorkloadActual  67: 2048 op, 429044695.00 ns, 209.4945 us/op
+WorkloadActual  68: 2048 op, 464215114.00 ns, 226.6675 us/op
+WorkloadActual  69: 2048 op, 480899896.00 ns, 234.8144 us/op
+WorkloadActual  70: 2048 op, 435347026.00 ns, 212.5718 us/op
+WorkloadActual  71: 2048 op, 448621509.00 ns, 219.0535 us/op
+WorkloadActual  72: 2048 op, 427812201.00 ns, 208.8927 us/op
+WorkloadActual  73: 2048 op, 506733845.00 ns, 247.4286 us/op
+WorkloadActual  74: 2048 op, 435246720.00 ns, 212.5228 us/op
+WorkloadActual  75: 2048 op, 428818394.00 ns, 209.3840 us/op
+WorkloadActual  76: 2048 op, 457027249.00 ns, 223.1578 us/op
+WorkloadActual  77: 2048 op, 431451738.00 ns, 210.6698 us/op
+WorkloadActual  78: 2048 op, 455146911.00 ns, 222.2397 us/op
+WorkloadActual  79: 2048 op, 543394667.00 ns, 265.3294 us/op
+WorkloadActual  80: 2048 op, 522038299.00 ns, 254.9015 us/op
+WorkloadActual  81: 2048 op, 540973010.00 ns, 264.1470 us/op
+WorkloadActual  82: 2048 op, 439785375.00 ns, 214.7390 us/op
+WorkloadActual  83: 2048 op, 422539538.00 ns, 206.3181 us/op
+WorkloadActual  84: 2048 op, 425417660.00 ns, 207.7235 us/op
+WorkloadActual  85: 2048 op, 410040287.00 ns, 200.2150 us/op
+WorkloadActual  86: 2048 op, 407246388.00 ns, 198.8508 us/op
+WorkloadActual  87: 2048 op, 416962908.00 ns, 203.5952 us/op
+WorkloadActual  88: 2048 op, 512017594.00 ns, 250.0086 us/op
+WorkloadActual  89: 2048 op, 461475747.00 ns, 225.3300 us/op
+WorkloadActual  90: 2048 op, 407366974.00 ns, 198.9097 us/op
+WorkloadActual  91: 2048 op, 416550395.00 ns, 203.3937 us/op
+WorkloadActual  92: 2048 op, 541605311.00 ns, 264.4557 us/op
+WorkloadActual  93: 2048 op, 545764403.00 ns, 266.4865 us/op
+WorkloadActual  94: 2048 op, 491536946.00 ns, 240.0083 us/op
+WorkloadActual  95: 2048 op, 433406935.00 ns, 211.6245 us/op
+WorkloadActual  96: 2048 op, 431461289.00 ns, 210.6745 us/op
+WorkloadActual  97: 2048 op, 420265787.00 ns, 205.2079 us/op
+WorkloadActual  98: 2048 op, 415504465.00 ns, 202.8830 us/op
+WorkloadActual  99: 2048 op, 405571881.00 ns, 198.0331 us/op
+WorkloadActual  100: 2048 op, 416053165.00 ns, 203.1510 us/op
+
+// AfterActualRun
+WorkloadResult   1: 2048 op, 439295318.00 ns, 214.4997 us/op
+WorkloadResult   2: 2048 op, 422369339.00 ns, 206.2350 us/op
+WorkloadResult   3: 2048 op, 413927016.00 ns, 202.1128 us/op
+WorkloadResult   4: 2048 op, 450861179.00 ns, 220.1471 us/op
+WorkloadResult   5: 2048 op, 469380301.00 ns, 229.1896 us/op
+WorkloadResult   6: 2048 op, 450351961.00 ns, 219.8984 us/op
+WorkloadResult   7: 2048 op, 495572938.00 ns, 241.9790 us/op
+WorkloadResult   8: 2048 op, 448372333.00 ns, 218.9318 us/op
+WorkloadResult   9: 2048 op, 422461210.00 ns, 206.2799 us/op
+WorkloadResult  10: 2048 op, 436821237.00 ns, 213.2916 us/op
+WorkloadResult  11: 2048 op, 431373637.00 ns, 210.6317 us/op
+WorkloadResult  12: 2048 op, 446819245.00 ns, 218.1735 us/op
+WorkloadResult  13: 2048 op, 438128900.00 ns, 213.9301 us/op
+WorkloadResult  14: 2048 op, 452989178.00 ns, 221.1861 us/op
+WorkloadResult  15: 2048 op, 411614266.00 ns, 200.9835 us/op
+WorkloadResult  16: 2048 op, 423292018.00 ns, 206.6856 us/op
+WorkloadResult  17: 2048 op, 445254800.00 ns, 217.4096 us/op
+WorkloadResult  18: 2048 op, 476203114.00 ns, 232.5211 us/op
+WorkloadResult  19: 2048 op, 439625456.00 ns, 214.6609 us/op
+WorkloadResult  20: 2048 op, 486979601.00 ns, 237.7830 us/op
+WorkloadResult  21: 2048 op, 440346489.00 ns, 215.0129 us/op
+WorkloadResult  22: 2048 op, 458881283.00 ns, 224.0631 us/op
+WorkloadResult  23: 2048 op, 483033308.00 ns, 235.8561 us/op
+WorkloadResult  24: 2048 op, 488006470.00 ns, 238.2844 us/op
+WorkloadResult  25: 2048 op, 436574394.00 ns, 213.1711 us/op
+WorkloadResult  26: 2048 op, 430057316.00 ns, 209.9889 us/op
+WorkloadResult  27: 2048 op, 423876872.00 ns, 206.9711 us/op
+WorkloadResult  28: 2048 op, 412454825.00 ns, 201.3940 us/op
+WorkloadResult  29: 2048 op, 412418751.00 ns, 201.3763 us/op
+WorkloadResult  30: 2048 op, 422130591.00 ns, 206.1185 us/op
+WorkloadResult  31: 2048 op, 443073021.00 ns, 216.3442 us/op
+WorkloadResult  32: 2048 op, 437238533.00 ns, 213.4954 us/op
+WorkloadResult  33: 2048 op, 437521969.00 ns, 213.6338 us/op
+WorkloadResult  34: 2048 op, 452787787.00 ns, 221.0878 us/op
+WorkloadResult  35: 2048 op, 425404306.00 ns, 207.7169 us/op
+WorkloadResult  36: 2048 op, 454065744.00 ns, 221.7118 us/op
+WorkloadResult  37: 2048 op, 462925971.00 ns, 226.0381 us/op
+WorkloadResult  38: 2048 op, 456192263.00 ns, 222.7501 us/op
+WorkloadResult  39: 2048 op, 453400342.00 ns, 221.3869 us/op
+WorkloadResult  40: 2048 op, 491941302.00 ns, 240.2057 us/op
+WorkloadResult  41: 2048 op, 505330202.00 ns, 246.7433 us/op
+WorkloadResult  42: 2048 op, 456050582.00 ns, 222.6809 us/op
+WorkloadResult  43: 2048 op, 439237015.00 ns, 214.4712 us/op
+WorkloadResult  44: 2048 op, 442801037.00 ns, 216.2114 us/op
+WorkloadResult  45: 2048 op, 429582839.00 ns, 209.7572 us/op
+WorkloadResult  46: 2048 op, 439619613.00 ns, 214.6580 us/op
+WorkloadResult  47: 2048 op, 413808643.00 ns, 202.0550 us/op
+WorkloadResult  48: 2048 op, 439258596.00 ns, 214.4817 us/op
+WorkloadResult  49: 2048 op, 422670208.00 ns, 206.3819 us/op
+WorkloadResult  50: 2048 op, 430602618.00 ns, 210.2552 us/op
+WorkloadResult  51: 2048 op, 487747188.00 ns, 238.1578 us/op
+WorkloadResult  52: 2048 op, 428414018.00 ns, 209.1865 us/op
+WorkloadResult  53: 2048 op, 422288774.00 ns, 206.1957 us/op
+WorkloadResult  54: 2048 op, 423745585.00 ns, 206.9070 us/op
+WorkloadResult  55: 2048 op, 422778266.00 ns, 206.4347 us/op
+WorkloadResult  56: 2048 op, 425705913.00 ns, 207.8642 us/op
+WorkloadResult  57: 2048 op, 424265543.00 ns, 207.1609 us/op
+WorkloadResult  58: 2048 op, 424750239.00 ns, 207.3976 us/op
+WorkloadResult  59: 2048 op, 504633902.00 ns, 246.4033 us/op
+WorkloadResult  60: 2048 op, 415468999.00 ns, 202.8657 us/op
+WorkloadResult  61: 2048 op, 437251373.00 ns, 213.5016 us/op
+WorkloadResult  62: 2048 op, 481797546.00 ns, 235.2527 us/op
+WorkloadResult  63: 2048 op, 510297405.00 ns, 249.1687 us/op
+WorkloadResult  64: 2048 op, 429044695.00 ns, 209.4945 us/op
+WorkloadResult  65: 2048 op, 464215114.00 ns, 226.6675 us/op
+WorkloadResult  66: 2048 op, 480899896.00 ns, 234.8144 us/op
+WorkloadResult  67: 2048 op, 435347026.00 ns, 212.5718 us/op
+WorkloadResult  68: 2048 op, 448621509.00 ns, 219.0535 us/op
+WorkloadResult  69: 2048 op, 427812201.00 ns, 208.8927 us/op
+WorkloadResult  70: 2048 op, 506733845.00 ns, 247.4286 us/op
+WorkloadResult  71: 2048 op, 435246720.00 ns, 212.5228 us/op
+WorkloadResult  72: 2048 op, 428818394.00 ns, 209.3840 us/op
+WorkloadResult  73: 2048 op, 457027249.00 ns, 223.1578 us/op
+WorkloadResult  74: 2048 op, 431451738.00 ns, 210.6698 us/op
+WorkloadResult  75: 2048 op, 455146911.00 ns, 222.2397 us/op
+WorkloadResult  76: 2048 op, 439785375.00 ns, 214.7390 us/op
+WorkloadResult  77: 2048 op, 422539538.00 ns, 206.3181 us/op
+WorkloadResult  78: 2048 op, 425417660.00 ns, 207.7235 us/op
+WorkloadResult  79: 2048 op, 410040287.00 ns, 200.2150 us/op
+WorkloadResult  80: 2048 op, 407246388.00 ns, 198.8508 us/op
+WorkloadResult  81: 2048 op, 416962908.00 ns, 203.5952 us/op
+WorkloadResult  82: 2048 op, 512017594.00 ns, 250.0086 us/op
+WorkloadResult  83: 2048 op, 461475747.00 ns, 225.3300 us/op
+WorkloadResult  84: 2048 op, 407366974.00 ns, 198.9097 us/op
+WorkloadResult  85: 2048 op, 416550395.00 ns, 203.3937 us/op
+WorkloadResult  86: 2048 op, 491536946.00 ns, 240.0083 us/op
+WorkloadResult  87: 2048 op, 433406935.00 ns, 211.6245 us/op
+WorkloadResult  88: 2048 op, 431461289.00 ns, 210.6745 us/op
+WorkloadResult  89: 2048 op, 420265787.00 ns, 205.2079 us/op
+WorkloadResult  90: 2048 op, 415504465.00 ns, 202.8830 us/op
+WorkloadResult  91: 2048 op, 405571881.00 ns, 198.0331 us/op
+WorkloadResult  92: 2048 op, 416053165.00 ns, 203.1510 us/op
+// GC:  19 3 0 370776856 2048
+// Threading:  4088 1 2048
+
+[testcontainers.org 00:01:05.75] Delete Docker container 042ea7e00cfb
+[testcontainers.org 00:01:05.97] Delete Docker container 9ba344243e37
+[testcontainers.org 00:01:06.18] Delete Docker container c5ff08f49f0d
+// AfterAll
+// Benchmark Process 95398 has exited with code 0.
+
+Mean = 216.466 μs, StdErr = 1.363 μs (0.63%), N = 92, StdDev = 13.073 μs
+Min = 198.033 μs, Q1 = 206.852 μs, Median = 213.499 μs, Q3 = 222.350 μs, Max = 250.009 μs
+IQR = 15.498 μs, LowerFence = 183.604 μs, UpperFence = 245.598 μs
+ConfidenceInterval = [211.831 μs; 221.101 μs] (CI 99.9%), Margin = 4.635 μs (2.14% of Mean)
+Skewness = 0.94, Kurtosis = 3.03, MValue = 2.41
+
+// ** Remained 8 (88.9%) benchmark(s) to run. Estimated finish 2025-11-24 2:05 (0h 8m from now) **
+// **************************
+// Benchmark: EFVsNHibernate.NHibernate_RetrieveAll: DefaultJob
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet ORM_Benchmarks-DefaultJob-1.dll --anonymousPipes 158 159 --benchmarkName MyBenchmarks.EFVsNHibernate.NHibernate_RetrieveAll --job Default --benchmarkId 1 in /home/cmarshall/source/repos/ORM-Fun/ORM_Benchmarks/bin/Release/net9.0/ORM_Benchmarks-DefaultJob-1/bin/Release/net9.0
+// Failed to set up high priority (Permission denied). In order to run benchmarks with high priority, make sure you have the right permissions.
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.15.6
+// Runtime=.NET 9.0.10 (9.0.10, 9.0.1025.47515), X64 RyuJIT x86-64-v3
+// GC=Concurrent Workstation
+// HardwareIntrinsics=AVX2+BMI1+BMI2+F16C+FMA+LZCNT+MOVBE,AVX,SSE3+SSSE3+SSE4.1+SSE4.2+POPCNT,X86Base+SSE+SSE2,AES+PCLMUL,AvxVnni,SERIALIZE VectorSize=256
+// Job: DefaultJob
+
+Starting Entity Framework SQL Server container...
+[testcontainers.org 00:00:00.05] Connected to Docker:
+  Host: unix:///var/run/docker.sock
+  Server Version: 29.0.1
+  Kernel Version: 6.14.0-35-generic
+  API Version: 1.52
+  Operating System: Ubuntu 24.04.3 LTS
+  Total Memory: 62.60 GB
+[testcontainers.org 00:00:00.10] Docker container f4b7d9ee1c67 created
+[testcontainers.org 00:00:00.11] Start Docker container f4b7d9ee1c67
+[testcontainers.org 00:00:00.26] Wait for Docker container f4b7d9ee1c67 to complete readiness checks
+[testcontainers.org 00:00:00.26] Docker container f4b7d9ee1c67 ready
+[testcontainers.org 00:00:00.27] Docker container 3e5becf864d8 created
+[testcontainers.org 00:00:00.27] Start Docker container 3e5becf864d8
+[testcontainers.org 00:00:00.34] Wait for Docker container 3e5becf864d8 to complete readiness checks
+[testcontainers.org 00:00:00.35] Execute "/bin/sh -c find /opt/mssql-tools*/bin/sqlcmd -type f -print -quit" at Docker container 3e5becf864d8
+[testcontainers.org 00:00:00.39] Execute "/opt/mssql-tools18/bin/sqlcmd -C -Q SELECT 1;" at Docker container 3e5becf864d8
+[testcontainers.org 00:00:02.93] Docker container 3e5becf864d8 ready
+EF Container started: Server=127.0.0.1,32816;Database=master;User Id=sa;Password=YourStrong@Passw0rd;TrustServerCertificate=True
+Starting NHibernate SQL Server container...
+[testcontainers.org 00:00:03.16] Docker container f39a56ed243f created
+[testcontainers.org 00:00:03.16] Start Docker container f39a56ed243f
+[testcontainers.org 00:00:03.23] Wait for Docker container f39a56ed243f to complete readiness checks
+[testcontainers.org 00:00:03.23] Execute "/bin/sh -c find /opt/mssql-tools*/bin/sqlcmd -type f -print -quit" at Docker container f39a56ed243f
+[testcontainers.org 00:00:03.28] Execute "/opt/mssql-tools18/bin/sqlcmd -C -Q SELECT 1;" at Docker container f39a56ed243f
+[testcontainers.org 00:00:05.83] Docker container f39a56ed243f ready
+NH Container started: Server=127.0.0.1,32817;Database=master;User Id=sa;Password=YourStrong@Passw0rd;TrustServerCertificate=True
+Starting Dapper SQL Server container...
+[testcontainers.org 00:00:05.94] Docker container c2902cedc1be created
+[testcontainers.org 00:00:05.94] Start Docker container c2902cedc1be
+[testcontainers.org 00:00:06.02] Wait for Docker container c2902cedc1be to complete readiness checks
+[testcontainers.org 00:00:06.02] Execute "/bin/sh -c find /opt/mssql-tools*/bin/sqlcmd -type f -print -quit" at Docker container c2902cedc1be
+[testcontainers.org 00:00:06.05] Execute "/opt/mssql-tools18/bin/sqlcmd -C -Q SELECT 1;" at Docker container c2902cedc1be
+[testcontainers.org 00:00:08.58] Docker container c2902cedc1be ready
+Dapper Container started: Server=127.0.0.1,32818;Database=master;User Id=sa;Password=YourStrong@Passw0rd;TrustServerCertificate=True
+Setting up Entity Framework...
+Seeded 100 products for EF
+Setting up NHibernate...
+Seeded 100 products for NHibernate
+Setting up Dapper...
+Seeded 100 products for Dapper
+Setup complete!
+OverheadJitting  1: 1 op, 121626.00 ns, 121.6260 us/op
+WorkloadJitting  1: 1 op, 61214201.00 ns, 61.2142 ms/op
+
+WorkloadPilot    1: 2 op, 1590898.00 ns, 795.4490 us/op
+WorkloadPilot    2: 3 op, 1479643.00 ns, 493.2143 us/op
+WorkloadPilot    3: 4 op, 1687655.00 ns, 421.9138 us/op
+WorkloadPilot    4: 5 op, 1970040.00 ns, 394.0080 us/op
+WorkloadPilot    5: 6 op, 2249477.00 ns, 374.9128 us/op
+WorkloadPilot    6: 7 op, 2259281.00 ns, 322.7544 us/op
+WorkloadPilot    7: 8 op, 3126275.00 ns, 390.7844 us/op
+WorkloadPilot    8: 9 op, 2839359.00 ns, 315.4843 us/op
+WorkloadPilot    9: 10 op, 3030476.00 ns, 303.0476 us/op
+WorkloadPilot   10: 11 op, 3233291.00 ns, 293.9355 us/op
+WorkloadPilot   11: 12 op, 3519598.00 ns, 293.2998 us/op
+WorkloadPilot   12: 13 op, 3925898.00 ns, 301.9922 us/op
+WorkloadPilot   13: 14 op, 5068127.00 ns, 362.0091 us/op
+WorkloadPilot   14: 15 op, 5525461.00 ns, 368.3641 us/op
+WorkloadPilot   15: 16 op, 6107181.00 ns, 381.6988 us/op
+WorkloadPilot   16: 32 op, 8698772.00 ns, 271.8366 us/op
+WorkloadPilot   17: 64 op, 15679716.00 ns, 244.9956 us/op
+WorkloadPilot   18: 128 op, 29998295.00 ns, 234.3617 us/op
+WorkloadPilot   19: 256 op, 57070836.00 ns, 222.9330 us/op
+WorkloadPilot   20: 512 op, 104901521.00 ns, 204.8858 us/op
+WorkloadPilot   21: 1024 op, 201283532.00 ns, 196.5659 us/op
+WorkloadPilot   22: 2048 op, 440217233.00 ns, 214.9498 us/op
+WorkloadPilot   23: 4096 op, 648354366.00 ns, 158.2896 us/op
+
+WorkloadWarmup   1: 4096 op, 433879633.00 ns, 105.9276 us/op
+WorkloadWarmup   2: 4096 op, 477936286.00 ns, 116.6837 us/op
+WorkloadWarmup   3: 4096 op, 491467416.00 ns, 119.9872 us/op
+WorkloadWarmup   4: 4096 op, 628386541.00 ns, 153.4147 us/op
+WorkloadWarmup   5: 4096 op, 597846837.00 ns, 145.9587 us/op
+WorkloadWarmup   6: 4096 op, 530930867.00 ns, 129.6218 us/op
+WorkloadWarmup   7: 4096 op, 509841060.00 ns, 124.4729 us/op
+WorkloadWarmup   8: 4096 op, 494424537.00 ns, 120.7091 us/op
+WorkloadWarmup   9: 4096 op, 478718239.00 ns, 116.8746 us/op
+WorkloadWarmup  10: 4096 op, 600143847.00 ns, 146.5195 us/op
+WorkloadWarmup  11: 4096 op, 475618471.00 ns, 116.1178 us/op
+
+// BeforeActualRun
+WorkloadActual   1: 4096 op, 473403547.00 ns, 115.5770 us/op
+WorkloadActual   2: 4096 op, 465191237.00 ns, 113.5721 us/op
+WorkloadActual   3: 4096 op, 469699195.00 ns, 114.6727 us/op
+WorkloadActual   4: 4096 op, 443397561.00 ns, 108.2514 us/op
+WorkloadActual   5: 4096 op, 424307406.00 ns, 103.5907 us/op
+WorkloadActual   6: 4096 op, 431784659.00 ns, 105.4162 us/op
+WorkloadActual   7: 4096 op, 449761597.00 ns, 109.8051 us/op

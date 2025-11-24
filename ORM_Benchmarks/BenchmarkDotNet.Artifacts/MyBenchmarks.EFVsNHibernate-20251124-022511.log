@@ -1,0 +1,28 @@
+// Validating benchmarks:
+// Benchmark EFVsNHibernate.EF_RetrieveAll: DefaultJob
+//    * BenchmarkDotNet requires dotnet SDK to be installed or path to local dotnet cli provided in explicit way using `--cli` argument, benchmark 'EFVsNHibernate.EF_RetrieveAll: DefaultJob' will not be executed
+
+// Benchmark EFVsNHibernate.NHibernate_RetrieveAll: DefaultJob
+//    * BenchmarkDotNet requires dotnet SDK to be installed or path to local dotnet cli provided in explicit way using `--cli` argument, benchmark 'EFVsNHibernate.NHibernate_RetrieveAll: DefaultJob' will not be executed
+
+// Benchmark EFVsNHibernate.Dapper_RetrieveAll: DefaultJob
+//    * BenchmarkDotNet requires dotnet SDK to be installed or path to local dotnet cli provided in explicit way using `--cli` argument, benchmark 'EFVsNHibernate.Dapper_RetrieveAll: DefaultJob' will not be executed
+
+// Benchmark EFVsNHibernate.EF_RetrieveById: DefaultJob
+//    * BenchmarkDotNet requires dotnet SDK to be installed or path to local dotnet cli provided in explicit way using `--cli` argument, benchmark 'EFVsNHibernate.EF_RetrieveById: DefaultJob' will not be executed
+
+// Benchmark EFVsNHibernate.NHibernate_RetrieveById: DefaultJob
+//    * BenchmarkDotNet requires dotnet SDK to be installed or path to local dotnet cli provided in explicit way using `--cli` argument, benchmark 'EFVsNHibernate.NHibernate_RetrieveById: DefaultJob' will not be executed
+
+// Benchmark EFVsNHibernate.Dapper_RetrieveById: DefaultJob
+//    * BenchmarkDotNet requires dotnet SDK to be installed or path to local dotnet cli provided in explicit way using `--cli` argument, benchmark 'EFVsNHibernate.Dapper_RetrieveById: DefaultJob' will not be executed
+
+// Benchmark EFVsNHibernate.EF_AddRecord: DefaultJob
+//    * BenchmarkDotNet requires dotnet SDK to be installed or path to local dotnet cli provided in explicit way using `--cli` argument, benchmark 'EFVsNHibernate.EF_AddRecord: DefaultJob' will not be executed
+
+// Benchmark EFVsNHibernate.NHibernate_AddRecord: DefaultJob
+//    * BenchmarkDotNet requires dotnet SDK to be installed or path to local dotnet cli provided in explicit way using `--cli` argument, benchmark 'EFVsNHibernate.NHibernate_AddRecord: DefaultJob' will not be executed
+
+// Benchmark EFVsNHibernate.Dapper_AddRecord: DefaultJob
+//    * BenchmarkDotNet requires dotnet SDK to be installed or path to local dotnet cli provided in explicit way using `--cli` argument, benchmark 'EFVsNHibernate.Dapper_AddRecord: DefaultJob' will not be executed
+

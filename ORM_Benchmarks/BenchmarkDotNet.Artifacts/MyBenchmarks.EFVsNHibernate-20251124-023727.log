@@ -1,0 +1,28 @@
+// Validating benchmarks:
+// Benchmark EFVsNHibernate.EF_RetrieveAll: Job-QAZYSB(Affinity=11111111)
+//    * BenchmarkDotNet requires dotnet SDK to be installed or path to local dotnet cli provided in explicit way using `--cli` argument, benchmark 'EFVsNHibernate.EF_RetrieveAll: Job-QAZYSB(Affinity=11111111)' will not be executed
+
+// Benchmark EFVsNHibernate.NHibernate_RetrieveAll: Job-QAZYSB(Affinity=11111111)
+//    * BenchmarkDotNet requires dotnet SDK to be installed or path to local dotnet cli provided in explicit way using `--cli` argument, benchmark 'EFVsNHibernate.NHibernate_RetrieveAll: Job-QAZYSB(Affinity=11111111)' will not be executed
+
+// Benchmark EFVsNHibernate.Dapper_RetrieveAll: Job-QAZYSB(Affinity=11111111)
+//    * BenchmarkDotNet requires dotnet SDK to be installed or path to local dotnet cli provided in explicit way using `--cli` argument, benchmark 'EFVsNHibernate.Dapper_RetrieveAll: Job-QAZYSB(Affinity=11111111)' will not be executed
+
+// Benchmark EFVsNHibernate.EF_RetrieveById: Job-QAZYSB(Affinity=11111111)
+//    * BenchmarkDotNet requires dotnet SDK to be installed or path to local dotnet cli provided in explicit way using `--cli` argument, benchmark 'EFVsNHibernate.EF_RetrieveById: Job-QAZYSB(Affinity=11111111)' will not be executed
+
+// Benchmark EFVsNHibernate.NHibernate_RetrieveById: Job-QAZYSB(Affinity=11111111)
+//    * BenchmarkDotNet requires dotnet SDK to be installed or path to local dotnet cli provided in explicit way using `--cli` argument, benchmark 'EFVsNHibernate.NHibernate_RetrieveById: Job-QAZYSB(Affinity=11111111)' will not be executed
+
+// Benchmark EFVsNHibernate.Dapper_RetrieveById: Job-QAZYSB(Affinity=11111111)
+//    * BenchmarkDotNet requires dotnet SDK to be installed or path to local dotnet cli provided in explicit way using `--cli` argument, benchmark 'EFVsNHibernate.Dapper_RetrieveById: Job-QAZYSB(Affinity=11111111)' will not be executed
+
+// Benchmark EFVsNHibernate.EF_AddRecord: Job-QAZYSB(Affinity=11111111)
+//    * BenchmarkDotNet requires dotnet SDK to be installed or path to local dotnet cli provided in explicit way using `--cli` argument, benchmark 'EFVsNHibernate.EF_AddRecord: Job-QAZYSB(Affinity=11111111)' will not be executed
+
+// Benchmark EFVsNHibernate.NHibernate_AddRecord: Job-QAZYSB(Affinity=11111111)
+//    * BenchmarkDotNet requires dotnet SDK to be installed or path to local dotnet cli provided in explicit way using `--cli` argument, benchmark 'EFVsNHibernate.NHibernate_AddRecord: Job-QAZYSB(Affinity=11111111)' will not be executed
+
+// Benchmark EFVsNHibernate.Dapper_AddRecord: Job-QAZYSB(Affinity=11111111)
+//    * BenchmarkDotNet requires dotnet SDK to be installed or path to local dotnet cli provided in explicit way using `--cli` argument, benchmark 'EFVsNHibernate.Dapper_AddRecord: Job-QAZYSB(Affinity=11111111)' will not be executed
+

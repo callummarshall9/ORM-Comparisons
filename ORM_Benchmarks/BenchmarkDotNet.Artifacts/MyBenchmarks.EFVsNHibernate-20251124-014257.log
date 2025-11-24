@@ -1,0 +1,110 @@
+// Validating benchmarks:
+// ***** BenchmarkRunner: Start   *****
+// ***** Found 9 benchmark(s) in total *****
+// ***** Building 1 exe(s) in Parallel: Start   *****
+// start dotnet  restore --nodeReuse:false /p:UseSharedCompilation=false /p:Deterministic=true /p:Optimize=true /p:ArtifactsPath="/home/cmarshall/source/repos/ORM-Fun/ORM_Benchmarks/bin/Release/net9.0/ORM_Benchmarks-DefaultJob-1/" /p:OutDir="/home/cmarshall/source/repos/ORM-Fun/ORM_Benchmarks/bin/Release/net9.0/ORM_Benchmarks-DefaultJob-1/bin/Release/net9.0/" /p:OutputPath="/home/cmarshall/source/repos/ORM-Fun/ORM_Benchmarks/bin/Release/net9.0/ORM_Benchmarks-DefaultJob-1/bin/Release/net9.0/" /p:PublishDir="/home/cmarshall/source/repos/ORM-Fun/ORM_Benchmarks/bin/Release/net9.0/ORM_Benchmarks-DefaultJob-1/publish/" in /home/cmarshall/source/repos/ORM-Fun/ORM_Benchmarks/bin/Release/net9.0/ORM_Benchmarks-DefaultJob-1
+// command took 0.6 sec and exited with 0
+// start dotnet  build -c Release --no-restore --nodeReuse:false /p:UseSharedCompilation=false /p:Deterministic=true /p:Optimize=true /p:ArtifactsPath="/home/cmarshall/source/repos/ORM-Fun/ORM_Benchmarks/bin/Release/net9.0/ORM_Benchmarks-DefaultJob-1/" /p:OutDir="/home/cmarshall/source/repos/ORM-Fun/ORM_Benchmarks/bin/Release/net9.0/ORM_Benchmarks-DefaultJob-1/bin/Release/net9.0/" /p:OutputPath="/home/cmarshall/source/repos/ORM-Fun/ORM_Benchmarks/bin/Release/net9.0/ORM_Benchmarks-DefaultJob-1/bin/Release/net9.0/" /p:PublishDir="/home/cmarshall/source/repos/ORM-Fun/ORM_Benchmarks/bin/Release/net9.0/ORM_Benchmarks-DefaultJob-1/publish/" --output "/home/cmarshall/source/repos/ORM-Fun/ORM_Benchmarks/bin/Release/net9.0/ORM_Benchmarks-DefaultJob-1/bin/Release/net9.0/" in /home/cmarshall/source/repos/ORM-Fun/ORM_Benchmarks/bin/Release/net9.0/ORM_Benchmarks-DefaultJob-1
+// command took 2.45 sec and exited with 0
+// ***** Done, took 00:00:03 (3.08 sec)   *****
+// Found 9 benchmarks:
+//   EFVsNHibernate.EF_RetrieveAll: DefaultJob
+//   EFVsNHibernate.NHibernate_RetrieveAll: DefaultJob
+//   EFVsNHibernate.Dapper_RetrieveAll: DefaultJob
+//   EFVsNHibernate.EF_RetrieveById: DefaultJob
+//   EFVsNHibernate.NHibernate_RetrieveById: DefaultJob
+//   EFVsNHibernate.Dapper_RetrieveById: DefaultJob
+//   EFVsNHibernate.EF_AddRecord: DefaultJob
+//   EFVsNHibernate.NHibernate_AddRecord: DefaultJob
+//   EFVsNHibernate.Dapper_AddRecord: DefaultJob
+
+// **************************
+// Benchmark: EFVsNHibernate.EF_RetrieveAll: DefaultJob
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet ORM_Benchmarks-DefaultJob-1.dll --anonymousPipes 156 157 --benchmarkName MyBenchmarks.EFVsNHibernate.EF_RetrieveAll --job Default --benchmarkId 0 in /home/cmarshall/source/repos/ORM-Fun/ORM_Benchmarks/bin/Release/net9.0/ORM_Benchmarks-DefaultJob-1/bin/Release/net9.0
+// Failed to set up high priority (Permission denied). In order to run benchmarks with high priority, make sure you have the right permissions.
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.15.6
+// Runtime=.NET 9.0.10 (9.0.10, 9.0.1025.47515), X64 RyuJIT x86-64-v3
+// GC=Concurrent Workstation
+// HardwareIntrinsics=AVX2+BMI1+BMI2+F16C+FMA+LZCNT+MOVBE,AVX,SSE3+SSSE3+SSE4.1+SSE4.2+POPCNT,X86Base+SSE+SSE2,AES+PCLMUL,AvxVnni,SERIALIZE VectorSize=256
+// Job: DefaultJob
+
+Starting Entity Framework SQL Server container...
+[testcontainers.org 00:00:00.04] Connected to Docker:
+  Host: unix:///var/run/docker.sock
+  Server Version: 29.0.1
+  Kernel Version: 6.14.0-35-generic
+  API Version: 1.52
+  Operating System: Ubuntu 24.04.3 LTS
+  Total Memory: 62.60 GB
+[testcontainers.org 00:00:00.10] Docker container c32ce1155365 created
+[testcontainers.org 00:00:00.11] Start Docker container c32ce1155365
+[testcontainers.org 00:00:00.26] Wait for Docker container c32ce1155365 to complete readiness checks
+[testcontainers.org 00:00:00.26] Docker container c32ce1155365 ready
+[testcontainers.org 00:00:00.27] Docker container 5be480ec562d created
+[testcontainers.org 00:00:00.27] Start Docker container 5be480ec562d
+[testcontainers.org 00:00:00.36] Wait for Docker container 5be480ec562d to complete readiness checks
+[testcontainers.org 00:00:00.36] Execute "/bin/sh -c find /opt/mssql-tools*/bin/sqlcmd -type f -print -quit" at Docker container 5be480ec562d
+[testcontainers.org 00:00:00.40] Execute "/opt/mssql-tools18/bin/sqlcmd -C -Q SELECT 1;" at Docker container 5be480ec562d
+[testcontainers.org 00:00:02.95] Docker container 5be480ec562d ready
+EF Container started: Server=127.0.0.1,32790;Database=master;User Id=sa;Password=YourStrong@Passw0rd;TrustServerCertificate=True
+Starting NHibernate SQL Server container...
+[testcontainers.org 00:00:03.20] Docker container 455a76ab0b91 created
+[testcontainers.org 00:00:03.20] Start Docker container 455a76ab0b91
+[testcontainers.org 00:00:03.28] Wait for Docker container 455a76ab0b91 to complete readiness checks
+[testcontainers.org 00:00:03.28] Execute "/bin/sh -c find /opt/mssql-tools*/bin/sqlcmd -type f -print -quit" at Docker container 455a76ab0b91
+[testcontainers.org 00:00:03.31] Execute "/opt/mssql-tools18/bin/sqlcmd -C -Q SELECT 1;" at Docker container 455a76ab0b91
+[testcontainers.org 00:00:05.86] Docker container 455a76ab0b91 ready
+NH Container started: Server=127.0.0.1,32791;Database=master;User Id=sa;Password=YourStrong@Passw0rd;TrustServerCertificate=True
+Starting Dapper SQL Server container...
+[testcontainers.org 00:00:05.97] Docker container 0347125f4cd2 created
+[testcontainers.org 00:00:05.97] Start Docker container 0347125f4cd2
+[testcontainers.org 00:00:06.05] Wait for Docker container 0347125f4cd2 to complete readiness checks
+[testcontainers.org 00:00:06.05] Execute "/bin/sh -c find /opt/mssql-tools*/bin/sqlcmd -type f -print -quit" at Docker container 0347125f4cd2
+[testcontainers.org 00:00:06.08] Execute "/opt/mssql-tools18/bin/sqlcmd -C -Q SELECT 1;" at Docker container 0347125f4cd2
+[testcontainers.org 00:00:08.61] Docker container 0347125f4cd2 ready
+Dapper Container started: Server=127.0.0.1,32792;Database=master;User Id=sa;Password=YourStrong@Passw0rd;TrustServerCertificate=True
+Setting up Entity Framework...
+Seeded 100 products for EF
+Setting up NHibernate...
+Seeded 100 products for NHibernate
+Setting up Dapper...
+Seeded 100 products for Dapper
+Setup complete!
+OverheadJitting  1: 1 op, 114647.00 ns, 114.6470 us/op
+WorkloadJitting  1: 1 op, 64356235.00 ns, 64.3562 ms/op
+
+WorkloadPilot    1: 2 op, 22398588.00 ns, 11.1993 ms/op
+WorkloadPilot    2: 3 op, 2515664.00 ns, 838.5547 us/op
+WorkloadPilot    3: 4 op, 2917314.00 ns, 729.3285 us/op
+WorkloadPilot    4: 5 op, 3808441.00 ns, 761.6882 us/op
+WorkloadPilot    5: 6 op, 4334120.00 ns, 722.3533 us/op
+WorkloadPilot    6: 7 op, 5918845.00 ns, 845.5493 us/op
+WorkloadPilot    7: 8 op, 5605922.00 ns, 700.7403 us/op
+WorkloadPilot    8: 9 op, 6376696.00 ns, 708.5218 us/op
+WorkloadPilot    9: 10 op, 6815087.00 ns, 681.5087 us/op
+WorkloadPilot   10: 11 op, 8282145.00 ns, 752.9223 us/op
+WorkloadPilot   11: 12 op, 10080854.00 ns, 840.0712 us/op
+WorkloadPilot   12: 13 op, 8461234.00 ns, 650.8642 us/op
+WorkloadPilot   13: 14 op, 8653264.00 ns, 618.0903 us/op
+WorkloadPilot   14: 15 op, 9085527.00 ns, 605.7018 us/op
+WorkloadPilot   15: 16 op, 9799417.00 ns, 612.4636 us/op
+WorkloadPilot   16: 32 op, 21369409.00 ns, 667.7940 us/op
+WorkloadPilot   17: 64 op, 40690756.00 ns, 635.7931 us/op
+WorkloadPilot   18: 128 op, 81940290.00 ns, 640.1585 us/op
+WorkloadPilot   19: 256 op, 151137339.00 ns, 590.3802 us/op
+WorkloadPilot   20: 512 op, 307285410.00 ns, 600.1668 us/op
+WorkloadPilot   21: 1024 op, 634306876.00 ns, 619.4403 us/op
+
+WorkloadWarmup   1: 1024 op, 271823851.00 ns, 265.4530 us/op
+WorkloadWarmup   2: 1024 op, 218343102.00 ns, 213.2257 us/op
+WorkloadWarmup   3: 1024 op, 206894219.00 ns, 202.0451 us/op
+WorkloadWarmup   4: 1024 op, 206732783.00 ns, 201.8875 us/op
+WorkloadWarmup   5: 1024 op, 207872392.00 ns, 203.0004 us/op
+WorkloadWarmup   6: 1024 op, 207186008.00 ns, 202.3301 us/op
+WorkloadWarmup   7: 1024 op, 225005274.00 ns, 219.7317 us/op
+WorkloadWarmup   8: 1024 op, 226528409.00 ns, 221.2191 us/op

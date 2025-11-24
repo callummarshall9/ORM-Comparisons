@@ -1,0 +1,504 @@
+// Validating benchmarks:
+// ***** BenchmarkRunner: Start   *****
+// ***** Found 9 benchmark(s) in total *****
+// ***** Building 1 exe(s) in Parallel: Start   *****
+// start dotnet  restore --nodeReuse:false /p:UseSharedCompilation=false /p:Deterministic=true /p:Optimize=true /p:ArtifactsPath="/home/cmarshall/source/repos/ORM-Fun/ORM_Benchmarks/bin/Release/net10.0/ORM_Benchmarks-DefaultJob-1/" /p:OutDir="/home/cmarshall/source/repos/ORM-Fun/ORM_Benchmarks/bin/Release/net10.0/ORM_Benchmarks-DefaultJob-1/bin/Release/net10.0/" /p:OutputPath="/home/cmarshall/source/repos/ORM-Fun/ORM_Benchmarks/bin/Release/net10.0/ORM_Benchmarks-DefaultJob-1/bin/Release/net10.0/" /p:PublishDir="/home/cmarshall/source/repos/ORM-Fun/ORM_Benchmarks/bin/Release/net10.0/ORM_Benchmarks-DefaultJob-1/publish/" in /home/cmarshall/source/repos/ORM-Fun/ORM_Benchmarks/bin/Release/net10.0/ORM_Benchmarks-DefaultJob-1
+// command took 0.61 sec and exited with 0
+// start dotnet  build -c Release --no-restore --nodeReuse:false /p:UseSharedCompilation=false /p:Deterministic=true /p:Optimize=true /p:ArtifactsPath="/home/cmarshall/source/repos/ORM-Fun/ORM_Benchmarks/bin/Release/net10.0/ORM_Benchmarks-DefaultJob-1/" /p:OutDir="/home/cmarshall/source/repos/ORM-Fun/ORM_Benchmarks/bin/Release/net10.0/ORM_Benchmarks-DefaultJob-1/bin/Release/net10.0/" /p:OutputPath="/home/cmarshall/source/repos/ORM-Fun/ORM_Benchmarks/bin/Release/net10.0/ORM_Benchmarks-DefaultJob-1/bin/Release/net10.0/" /p:PublishDir="/home/cmarshall/source/repos/ORM-Fun/ORM_Benchmarks/bin/Release/net10.0/ORM_Benchmarks-DefaultJob-1/publish/" --output "/home/cmarshall/source/repos/ORM-Fun/ORM_Benchmarks/bin/Release/net10.0/ORM_Benchmarks-DefaultJob-1/bin/Release/net10.0/" in /home/cmarshall/source/repos/ORM-Fun/ORM_Benchmarks/bin/Release/net10.0/ORM_Benchmarks-DefaultJob-1
+// command took 3.07 sec and exited with 0
+// ***** Done, took 00:00:03 (3.71 sec)   *****
+// Found 9 benchmarks:
+//   EFVsNHibernate.EF_RetrieveAll: DefaultJob
+//   EFVsNHibernate.NHibernate_RetrieveAll: DefaultJob
+//   EFVsNHibernate.Dapper_RetrieveAll: DefaultJob
+//   EFVsNHibernate.EF_RetrieveById: DefaultJob
+//   EFVsNHibernate.NHibernate_RetrieveById: DefaultJob
+//   EFVsNHibernate.Dapper_RetrieveById: DefaultJob
+//   EFVsNHibernate.EF_AddRecord: DefaultJob
+//   EFVsNHibernate.NHibernate_AddRecord: DefaultJob
+//   EFVsNHibernate.Dapper_AddRecord: DefaultJob
+
+// **************************
+// Benchmark: EFVsNHibernate.EF_RetrieveAll: DefaultJob
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet ORM_Benchmarks-DefaultJob-1.dll --anonymousPipes 157 158 --benchmarkName MyBenchmarks.EFVsNHibernate.EF_RetrieveAll --job Default --benchmarkId 0 in /home/cmarshall/source/repos/ORM-Fun/ORM_Benchmarks/bin/Release/net10.0/ORM_Benchmarks-DefaultJob-1/bin/Release/net10.0
+// Failed to set up high priority (Permission denied). In order to run benchmarks with high priority, make sure you have the right permissions.
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.15.6
+// Runtime=.NET 10.0.0 (10.0.0, 10.0.25.52411), X64 RyuJIT x86-64-v3
+// GC=Concurrent Workstation
+// HardwareIntrinsics=AVX2+BMI1+BMI2+F16C+FMA+LZCNT+MOVBE,AVX,SSE3+SSSE3+SSE4.1+SSE4.2+POPCNT,X86Base+SSE+SSE2,AES+PCLMUL,AvxVnni,SERIALIZE VectorSize=256
+// Job: DefaultJob
+
+Starting Entity Framework SQL Server container...
+[testcontainers.org 00:00:00.05] Connected to Docker:
+  Host: unix:///var/run/docker.sock
+  Server Version: 29.0.1
+  Kernel Version: 6.14.0-35-generic
+  API Version: 1.52
+  Operating System: Ubuntu 24.04.3 LTS
+  Total Memory: 62.60 GB
+[testcontainers.org 00:00:00.10] Docker container 7a878023d780 created
+[testcontainers.org 00:00:00.12] Start Docker container 7a878023d780
+[testcontainers.org 00:00:00.24] Wait for Docker container 7a878023d780 to complete readiness checks
+[testcontainers.org 00:00:00.24] Docker container 7a878023d780 ready
+[testcontainers.org 00:00:02.27] Docker container 9544c5106111 created
+[testcontainers.org 00:00:02.27] Start Docker container 9544c5106111
+[testcontainers.org 00:00:02.36] Wait for Docker container 9544c5106111 to complete readiness checks
+[testcontainers.org 00:00:02.36] Execute "/bin/sh -c find /opt/mssql-tools*/bin/sqlcmd -type f -print -quit" at Docker container 9544c5106111
+[testcontainers.org 00:00:02.41] Execute "/opt/mssql-tools18/bin/sqlcmd -C -Q SELECT 1;" at Docker container 9544c5106111
+[testcontainers.org 00:00:04.96] Docker container 9544c5106111 ready
+EF Container started: Server=127.0.0.1,32856;Database=master;User Id=sa;Password=YourStrong@Passw0rd;TrustServerCertificate=True
+Starting NHibernate SQL Server container...
+[testcontainers.org 00:00:05.17] Docker container 451c23c291f0 created
+[testcontainers.org 00:00:05.17] Start Docker container 451c23c291f0
+[testcontainers.org 00:00:05.24] Wait for Docker container 451c23c291f0 to complete readiness checks
+[testcontainers.org 00:00:05.24] Execute "/bin/sh -c find /opt/mssql-tools*/bin/sqlcmd -type f -print -quit" at Docker container 451c23c291f0
+[testcontainers.org 00:00:05.27] Execute "/opt/mssql-tools18/bin/sqlcmd -C -Q SELECT 1;" at Docker container 451c23c291f0
+[testcontainers.org 00:00:07.81] Docker container 451c23c291f0 ready
+NH Container started: Server=127.0.0.1,32857;Database=master;User Id=sa;Password=YourStrong@Passw0rd;TrustServerCertificate=True
+Starting Dapper SQL Server container...
+[testcontainers.org 00:00:07.92] Docker container 9477581f0b87 created
+[testcontainers.org 00:00:07.92] Start Docker container 9477581f0b87
+[testcontainers.org 00:00:07.99] Wait for Docker container 9477581f0b87 to complete readiness checks
+[testcontainers.org 00:00:07.99] Execute "/bin/sh -c find /opt/mssql-tools*/bin/sqlcmd -type f -print -quit" at Docker container 9477581f0b87
+[testcontainers.org 00:00:08.03] Execute "/opt/mssql-tools18/bin/sqlcmd -C -Q SELECT 1;" at Docker container 9477581f0b87
+[testcontainers.org 00:00:10.56] Docker container 9477581f0b87 ready
+Dapper Container started: Server=127.0.0.1,32858;Database=master;User Id=sa;Password=YourStrong@Passw0rd;TrustServerCertificate=True
+Setting up Entity Framework...
+
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.InvalidOperationException: No service for type 'Microsoft.EntityFrameworkCore.IDbContextFactory`1[ORM_Benchmarks.EF.EFDbContext]' has been registered.
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at ORM_Benchmarks.EF.EFDbContextFactory..ctor(String connectionString) in /home/cmarshall/source/repos/ORM-Fun/ORM_Benchmarks/EF/EFDbContextFactory.cs:line 18
+   at MyBenchmarks.EFVsNHibernate.Setup() in /home/cmarshall/source/repos/ORM-Fun/ORM_Benchmarks/Program.cs:line 106
+   at BenchmarkDotNet.Helpers.AwaitHelper.GetResult(Task task)
+   at BenchmarkDotNet.Autogenerated.Runnable_0.<.ctor>b__3_0() in /home/cmarshall/source/repos/ORM-Fun/ORM_Benchmarks/bin/Release/net10.0/ORM_Benchmarks-DefaultJob-1/ORM_Benchmarks-DefaultJob-1.notcs:line 192
+   at BenchmarkDotNet.Engines.EngineFactory.CreateReadyToRun(EngineParameters engineParameters)
+   at BenchmarkDotNet.Autogenerated.Runnable_0.Run(IHost host, String benchmarkName) in /home/cmarshall/source/repos/ORM-Fun/ORM_Benchmarks/bin/Release/net10.0/ORM_Benchmarks-DefaultJob-1/ORM_Benchmarks-DefaultJob-1.notcs:line 176
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   --- End of inner exception stack trace ---
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at BenchmarkDotNet.Autogenerated.UniqueProgramName.AfterAssemblyLoadingAttached(String[] args) in /home/cmarshall/source/repos/ORM-Fun/ORM_Benchmarks/bin/Release/net10.0/ORM_Benchmarks-DefaultJob-1/ORM_Benchmarks-DefaultJob-1.notcs:line 57
+// AfterAll
+No Workload Results were obtained from the run.
+// Benchmark Process 126153 has exited with code 255.
+
+// ** Remained 8 (88.9%) benchmark(s) to run. Estimated finish 2025-11-24 2:10 (0h 1m from now) **
+// **************************
+// Benchmark: EFVsNHibernate.NHibernate_RetrieveAll: DefaultJob
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet ORM_Benchmarks-DefaultJob-1.dll --anonymousPipes 157 158 --benchmarkName MyBenchmarks.EFVsNHibernate.NHibernate_RetrieveAll --job Default --benchmarkId 1 in /home/cmarshall/source/repos/ORM-Fun/ORM_Benchmarks/bin/Release/net10.0/ORM_Benchmarks-DefaultJob-1/bin/Release/net10.0
+// Failed to set up high priority (Permission denied). In order to run benchmarks with high priority, make sure you have the right permissions.
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.15.6
+// Runtime=.NET 10.0.0 (10.0.0, 10.0.25.52411), X64 RyuJIT x86-64-v3
+// GC=Concurrent Workstation
+// HardwareIntrinsics=AVX2+BMI1+BMI2+F16C+FMA+LZCNT+MOVBE,AVX,SSE3+SSSE3+SSE4.1+SSE4.2+POPCNT,X86Base+SSE+SSE2,AES+PCLMUL,AvxVnni,SERIALIZE VectorSize=256
+// Job: DefaultJob
+
+Starting Entity Framework SQL Server container...
+[testcontainers.org 00:00:00.05] Connected to Docker:
+  Host: unix:///var/run/docker.sock
+  Server Version: 29.0.1
+  Kernel Version: 6.14.0-35-generic
+  API Version: 1.52
+  Operating System: Ubuntu 24.04.3 LTS
+  Total Memory: 62.60 GB
+[testcontainers.org 00:00:00.11] Docker container 05bdbd0f263d created
+[testcontainers.org 00:00:00.12] Start Docker container 05bdbd0f263d
+[testcontainers.org 00:00:00.32] Wait for Docker container 05bdbd0f263d to complete readiness checks
+[testcontainers.org 00:00:00.32] Docker container 05bdbd0f263d ready
+[testcontainers.org 00:00:02.35] Docker container 07946b7218e4 created
+[testcontainers.org 00:00:02.35] Start Docker container 07946b7218e4
+[testcontainers.org 00:00:02.43] Wait for Docker container 07946b7218e4 to complete readiness checks
+[testcontainers.org 00:00:02.43] Execute "/bin/sh -c find /opt/mssql-tools*/bin/sqlcmd -type f -print -quit" at Docker container 07946b7218e4
+[testcontainers.org 00:00:02.48] Execute "/opt/mssql-tools18/bin/sqlcmd -C -Q SELECT 1;" at Docker container 07946b7218e4
+[testcontainers.org 00:00:05.01] Docker container 07946b7218e4 ready
+EF Container started: Server=127.0.0.1,32860;Database=master;User Id=sa;Password=YourStrong@Passw0rd;TrustServerCertificate=True
+Starting NHibernate SQL Server container...
+[testcontainers.org 00:00:05.22] Docker container e007c58b4660 created
+[testcontainers.org 00:00:05.22] Start Docker container e007c58b4660
+[testcontainers.org 00:00:05.30] Wait for Docker container e007c58b4660 to complete readiness checks
+[testcontainers.org 00:00:05.30] Execute "/bin/sh -c find /opt/mssql-tools*/bin/sqlcmd -type f -print -quit" at Docker container e007c58b4660
+[testcontainers.org 00:00:05.33] Execute "/opt/mssql-tools18/bin/sqlcmd -C -Q SELECT 1;" at Docker container e007c58b4660
+[testcontainers.org 00:00:07.88] Docker container e007c58b4660 ready
+NH Container started: Server=127.0.0.1,32861;Database=master;User Id=sa;Password=YourStrong@Passw0rd;TrustServerCertificate=True
+Starting Dapper SQL Server container...
+[testcontainers.org 00:00:08.00] Docker container 7b092705d006 created
+[testcontainers.org 00:00:08.00] Start Docker container 7b092705d006
+[testcontainers.org 00:00:08.07] Wait for Docker container 7b092705d006 to complete readiness checks
+[testcontainers.org 00:00:08.07] Execute "/bin/sh -c find /opt/mssql-tools*/bin/sqlcmd -type f -print -quit" at Docker container 7b092705d006
+[testcontainers.org 00:00:08.12] Execute "/opt/mssql-tools18/bin/sqlcmd -C -Q SELECT 1;" at Docker container 7b092705d006
+[testcontainers.org 00:00:10.68] Docker container 7b092705d006 ready
+Dapper Container started: Server=127.0.0.1,32862;Database=master;User Id=sa;Password=YourStrong@Passw0rd;TrustServerCertificate=True
+Setting up Entity Framework...
+
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.InvalidOperationException: No service for type 'Microsoft.EntityFrameworkCore.IDbContextFactory`1[ORM_Benchmarks.EF.EFDbContext]' has been registered.
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at ORM_Benchmarks.EF.EFDbContextFactory..ctor(String connectionString) in /home/cmarshall/source/repos/ORM-Fun/ORM_Benchmarks/EF/EFDbContextFactory.cs:line 18
+   at MyBenchmarks.EFVsNHibernate.Setup() in /home/cmarshall/source/repos/ORM-Fun/ORM_Benchmarks/Program.cs:line 106
+   at BenchmarkDotNet.Helpers.AwaitHelper.GetResult(Task task)
+   at BenchmarkDotNet.Autogenerated.Runnable_1.<.ctor>b__3_0() in /home/cmarshall/source/repos/ORM-Fun/ORM_Benchmarks/bin/Release/net10.0/ORM_Benchmarks-DefaultJob-1/ORM_Benchmarks-DefaultJob-1.notcs:line 389
+   at BenchmarkDotNet.Engines.EngineFactory.CreateReadyToRun(EngineParameters engineParameters)
+   at BenchmarkDotNet.Autogenerated.Runnable_1.Run(IHost host, String benchmarkName) in /home/cmarshall/source/repos/ORM-Fun/ORM_Benchmarks/bin/Release/net10.0/ORM_Benchmarks-DefaultJob-1/ORM_Benchmarks-DefaultJob-1.notcs:line 373
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   --- End of inner exception stack trace ---
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at BenchmarkDotNet.Autogenerated.UniqueProgramName.AfterAssemblyLoadingAttached(String[] args) in /home/cmarshall/source/repos/ORM-Fun/ORM_Benchmarks/bin/Release/net10.0/ORM_Benchmarks-DefaultJob-1/ORM_Benchmarks-DefaultJob-1.notcs:line 57
+// AfterAll
+No Workload Results were obtained from the run.
+// Benchmark Process 127959 has exited with code 255.
+
+// ** Remained 7 (77.8%) benchmark(s) to run. Estimated finish 2025-11-24 2:10 (0h 1m from now) **
+// **************************
+// Benchmark: EFVsNHibernate.Dapper_RetrieveAll: DefaultJob
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet ORM_Benchmarks-DefaultJob-1.dll --anonymousPipes 157 158 --benchmarkName MyBenchmarks.EFVsNHibernate.Dapper_RetrieveAll --job Default --benchmarkId 2 in /home/cmarshall/source/repos/ORM-Fun/ORM_Benchmarks/bin/Release/net10.0/ORM_Benchmarks-DefaultJob-1/bin/Release/net10.0
+// Failed to set up high priority (Permission denied). In order to run benchmarks with high priority, make sure you have the right permissions.
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.15.6
+// Runtime=.NET 10.0.0 (10.0.0, 10.0.25.52411), X64 RyuJIT x86-64-v3
+// GC=Concurrent Workstation
+// HardwareIntrinsics=AVX2+BMI1+BMI2+F16C+FMA+LZCNT+MOVBE,AVX,SSE3+SSSE3+SSE4.1+SSE4.2+POPCNT,X86Base+SSE+SSE2,AES+PCLMUL,AvxVnni,SERIALIZE VectorSize=256
+// Job: DefaultJob
+
+Starting Entity Framework SQL Server container...
+[testcontainers.org 00:00:00.05] Connected to Docker:
+  Host: unix:///var/run/docker.sock
+  Server Version: 29.0.1
+  Kernel Version: 6.14.0-35-generic
+  API Version: 1.52
+  Operating System: Ubuntu 24.04.3 LTS
+  Total Memory: 62.60 GB
+[testcontainers.org 00:00:00.11] Docker container 810475ea298e created
+[testcontainers.org 00:00:00.12] Start Docker container 810475ea298e
+[testcontainers.org 00:00:00.32] Wait for Docker container 810475ea298e to complete readiness checks
+[testcontainers.org 00:00:00.32] Docker container 810475ea298e ready
+[testcontainers.org 00:00:02.35] Docker container e240bb9894a5 created
+[testcontainers.org 00:00:02.35] Start Docker container e240bb9894a5
+[testcontainers.org 00:00:02.43] Wait for Docker container e240bb9894a5 to complete readiness checks
+[testcontainers.org 00:00:02.44] Execute "/bin/sh -c find /opt/mssql-tools*/bin/sqlcmd -type f -print -quit" at Docker container e240bb9894a5
+[testcontainers.org 00:00:02.49] Execute "/opt/mssql-tools18/bin/sqlcmd -C -Q SELECT 1;" at Docker container e240bb9894a5
+[testcontainers.org 00:00:05.04] Docker container e240bb9894a5 ready
+EF Container started: Server=127.0.0.1,32864;Database=master;User Id=sa;Password=YourStrong@Passw0rd;TrustServerCertificate=True
+Starting NHibernate SQL Server container...
+[testcontainers.org 00:00:05.25] Docker container 79516befefbe created
+[testcontainers.org 00:00:05.25] Start Docker container 79516befefbe
+[testcontainers.org 00:00:05.33] Wait for Docker container 79516befefbe to complete readiness checks
+[testcontainers.org 00:00:05.33] Execute "/bin/sh -c find /opt/mssql-tools*/bin/sqlcmd -type f -print -quit" at Docker container 79516befefbe
+[testcontainers.org 00:00:05.37] Execute "/opt/mssql-tools18/bin/sqlcmd -C -Q SELECT 1;" at Docker container 79516befefbe
+[testcontainers.org 00:00:07.90] Docker container 79516befefbe ready
+NH Container started: Server=127.0.0.1,32865;Database=master;User Id=sa;Password=YourStrong@Passw0rd;TrustServerCertificate=True
+Starting Dapper SQL Server container...
+[testcontainers.org 00:00:08.01] Docker container f13a58710e49 created
+[testcontainers.org 00:00:08.01] Start Docker container f13a58710e49
+[testcontainers.org 00:00:08.09] Wait for Docker container f13a58710e49 to complete readiness checks
+[testcontainers.org 00:00:08.10] Execute "/bin/sh -c find /opt/mssql-tools*/bin/sqlcmd -type f -print -quit" at Docker container f13a58710e49
+[testcontainers.org 00:00:08.12] Execute "/opt/mssql-tools18/bin/sqlcmd -C -Q SELECT 1;" at Docker container f13a58710e49
+[testcontainers.org 00:00:10.65] Docker container f13a58710e49 ready
+Dapper Container started: Server=127.0.0.1,32866;Database=master;User Id=sa;Password=YourStrong@Passw0rd;TrustServerCertificate=True
+Setting up Entity Framework...
+
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.InvalidOperationException: No service for type 'Microsoft.EntityFrameworkCore.IDbContextFactory`1[ORM_Benchmarks.EF.EFDbContext]' has been registered.
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at ORM_Benchmarks.EF.EFDbContextFactory..ctor(String connectionString) in /home/cmarshall/source/repos/ORM-Fun/ORM_Benchmarks/EF/EFDbContextFactory.cs:line 18
+   at MyBenchmarks.EFVsNHibernate.Setup() in /home/cmarshall/source/repos/ORM-Fun/ORM_Benchmarks/Program.cs:line 106
+   at BenchmarkDotNet.Helpers.AwaitHelper.GetResult(Task task)
+   at BenchmarkDotNet.Autogenerated.Runnable_2.<.ctor>b__3_0() in /home/cmarshall/source/repos/ORM-Fun/ORM_Benchmarks/bin/Release/net10.0/ORM_Benchmarks-DefaultJob-1/ORM_Benchmarks-DefaultJob-1.notcs:line 586
+   at BenchmarkDotNet.Engines.EngineFactory.CreateReadyToRun(EngineParameters engineParameters)
+   at BenchmarkDotNet.Autogenerated.Runnable_2.Run(IHost host, String benchmarkName) in /home/cmarshall/source/repos/ORM-Fun/ORM_Benchmarks/bin/Release/net10.0/ORM_Benchmarks-DefaultJob-1/ORM_Benchmarks-DefaultJob-1.notcs:line 570
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   --- End of inner exception stack trace ---
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at BenchmarkDotNet.Autogenerated.UniqueProgramName.AfterAssemblyLoadingAttached(String[] args) in /home/cmarshall/source/repos/ORM-Fun/ORM_Benchmarks/bin/Release/net10.0/ORM_Benchmarks-DefaultJob-1/ORM_Benchmarks-DefaultJob-1.notcs:line 57
+// AfterAll
+No Workload Results were obtained from the run.
+// Benchmark Process 129913 has exited with code 255.
+
+// ** Remained 6 (66.7%) benchmark(s) to run. Estimated finish 2025-11-24 2:10 (0h 1m from now) **
+// **************************
+// Benchmark: EFVsNHibernate.EF_RetrieveById: DefaultJob
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet ORM_Benchmarks-DefaultJob-1.dll --anonymousPipes 157 158 --benchmarkName MyBenchmarks.EFVsNHibernate.EF_RetrieveById --job Default --benchmarkId 3 in /home/cmarshall/source/repos/ORM-Fun/ORM_Benchmarks/bin/Release/net10.0/ORM_Benchmarks-DefaultJob-1/bin/Release/net10.0
+// Failed to set up high priority (Permission denied). In order to run benchmarks with high priority, make sure you have the right permissions.
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.15.6
+// Runtime=.NET 10.0.0 (10.0.0, 10.0.25.52411), X64 RyuJIT x86-64-v3
+// GC=Concurrent Workstation
+// HardwareIntrinsics=AVX2+BMI1+BMI2+F16C+FMA+LZCNT+MOVBE,AVX,SSE3+SSSE3+SSE4.1+SSE4.2+POPCNT,X86Base+SSE+SSE2,AES+PCLMUL,AvxVnni,SERIALIZE VectorSize=256
+// Job: DefaultJob
+
+Starting Entity Framework SQL Server container...
+[testcontainers.org 00:00:00.05] Connected to Docker:
+  Host: unix:///var/run/docker.sock
+  Server Version: 29.0.1
+  Kernel Version: 6.14.0-35-generic
+  API Version: 1.52
+  Operating System: Ubuntu 24.04.3 LTS
+  Total Memory: 62.60 GB
+[testcontainers.org 00:00:00.10] Docker container c4c8dd293ea0 created
+[testcontainers.org 00:00:00.11] Start Docker container c4c8dd293ea0
+[testcontainers.org 00:00:00.27] Wait for Docker container c4c8dd293ea0 to complete readiness checks
+[testcontainers.org 00:00:00.27] Docker container c4c8dd293ea0 ready
+[testcontainers.org 00:00:02.29] Docker container 0133c91c9e67 created
+[testcontainers.org 00:00:02.29] Start Docker container 0133c91c9e67
+[testcontainers.org 00:00:02.37] Wait for Docker container 0133c91c9e67 to complete readiness checks
+[testcontainers.org 00:00:02.37] Execute "/bin/sh -c find /opt/mssql-tools*/bin/sqlcmd -type f -print -quit" at Docker container 0133c91c9e67
+[testcontainers.org 00:00:02.41] Execute "/opt/mssql-tools18/bin/sqlcmd -C -Q SELECT 1;" at Docker container 0133c91c9e67
+[testcontainers.org 00:00:04.96] Docker container 0133c91c9e67 ready
+EF Container started: Server=127.0.0.1,32868;Database=master;User Id=sa;Password=YourStrong@Passw0rd;TrustServerCertificate=True
+Starting NHibernate SQL Server container...
+[testcontainers.org 00:00:05.17] Docker container 95bb82fa623f created
+[testcontainers.org 00:00:05.17] Start Docker container 95bb82fa623f
+[testcontainers.org 00:00:05.26] Wait for Docker container 95bb82fa623f to complete readiness checks
+[testcontainers.org 00:00:05.26] Execute "/bin/sh -c find /opt/mssql-tools*/bin/sqlcmd -type f -print -quit" at Docker container 95bb82fa623f
+[testcontainers.org 00:00:05.29] Execute "/opt/mssql-tools18/bin/sqlcmd -C -Q SELECT 1;" at Docker container 95bb82fa623f
+[testcontainers.org 00:00:07.83] Docker container 95bb82fa623f ready
+NH Container started: Server=127.0.0.1,32869;Database=master;User Id=sa;Password=YourStrong@Passw0rd;TrustServerCertificate=True
+Starting Dapper SQL Server container...
+[testcontainers.org 00:00:07.94] Docker container ec43babcbff3 created
+[testcontainers.org 00:00:07.94] Start Docker container ec43babcbff3
+[testcontainers.org 00:00:08.01] Wait for Docker container ec43babcbff3 to complete readiness checks
+[testcontainers.org 00:00:08.01] Execute "/bin/sh -c find /opt/mssql-tools*/bin/sqlcmd -type f -print -quit" at Docker container ec43babcbff3
+[testcontainers.org 00:00:08.05] Execute "/opt/mssql-tools18/bin/sqlcmd -C -Q SELECT 1;" at Docker container ec43babcbff3
+[testcontainers.org 00:00:10.60] Docker container ec43babcbff3 ready
+Dapper Container started: Server=127.0.0.1,32870;Database=master;User Id=sa;Password=YourStrong@Passw0rd;TrustServerCertificate=True
+Setting up Entity Framework...
+
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.InvalidOperationException: No service for type 'Microsoft.EntityFrameworkCore.IDbContextFactory`1[ORM_Benchmarks.EF.EFDbContext]' has been registered.
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at ORM_Benchmarks.EF.EFDbContextFactory..ctor(String connectionString) in /home/cmarshall/source/repos/ORM-Fun/ORM_Benchmarks/EF/EFDbContextFactory.cs:line 18
+   at MyBenchmarks.EFVsNHibernate.Setup() in /home/cmarshall/source/repos/ORM-Fun/ORM_Benchmarks/Program.cs:line 106
+   at BenchmarkDotNet.Helpers.AwaitHelper.GetResult(Task task)
+   at BenchmarkDotNet.Autogenerated.Runnable_3.<.ctor>b__3_0() in /home/cmarshall/source/repos/ORM-Fun/ORM_Benchmarks/bin/Release/net10.0/ORM_Benchmarks-DefaultJob-1/ORM_Benchmarks-DefaultJob-1.notcs:line 783
+   at BenchmarkDotNet.Engines.EngineFactory.CreateReadyToRun(EngineParameters engineParameters)
+   at BenchmarkDotNet.Autogenerated.Runnable_3.Run(IHost host, String benchmarkName) in /home/cmarshall/source/repos/ORM-Fun/ORM_Benchmarks/bin/Release/net10.0/ORM_Benchmarks-DefaultJob-1/ORM_Benchmarks-DefaultJob-1.notcs:line 767
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   --- End of inner exception stack trace ---
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at BenchmarkDotNet.Autogenerated.UniqueProgramName.AfterAssemblyLoadingAttached(String[] args) in /home/cmarshall/source/repos/ORM-Fun/ORM_Benchmarks/bin/Release/net10.0/ORM_Benchmarks-DefaultJob-1/ORM_Benchmarks-DefaultJob-1.notcs:line 57
+// AfterAll
+No Workload Results were obtained from the run.
+// Benchmark Process 131814 has exited with code 255.
+
+// ** Remained 5 (55.6%) benchmark(s) to run. Estimated finish 2025-11-24 2:10 (0h 0m from now) **
+// **************************
+// Benchmark: EFVsNHibernate.NHibernate_RetrieveById: DefaultJob
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet ORM_Benchmarks-DefaultJob-1.dll --anonymousPipes 157 158 --benchmarkName MyBenchmarks.EFVsNHibernate.NHibernate_RetrieveById --job Default --benchmarkId 4 in /home/cmarshall/source/repos/ORM-Fun/ORM_Benchmarks/bin/Release/net10.0/ORM_Benchmarks-DefaultJob-1/bin/Release/net10.0
+// Failed to set up high priority (Permission denied). In order to run benchmarks with high priority, make sure you have the right permissions.
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.15.6
+// Runtime=.NET 10.0.0 (10.0.0, 10.0.25.52411), X64 RyuJIT x86-64-v3
+// GC=Concurrent Workstation
+// HardwareIntrinsics=AVX2+BMI1+BMI2+F16C+FMA+LZCNT+MOVBE,AVX,SSE3+SSSE3+SSE4.1+SSE4.2+POPCNT,X86Base+SSE+SSE2,AES+PCLMUL,AvxVnni,SERIALIZE VectorSize=256
+// Job: DefaultJob
+
+Starting Entity Framework SQL Server container...
+[testcontainers.org 00:00:00.05] Connected to Docker:
+  Host: unix:///var/run/docker.sock
+  Server Version: 29.0.1
+  Kernel Version: 6.14.0-35-generic
+  API Version: 1.52
+  Operating System: Ubuntu 24.04.3 LTS
+  Total Memory: 62.60 GB
+[testcontainers.org 00:00:00.11] Docker container d4c44fb2f273 created
+[testcontainers.org 00:00:00.12] Start Docker container d4c44fb2f273
+[testcontainers.org 00:00:00.27] Wait for Docker container d4c44fb2f273 to complete readiness checks
+[testcontainers.org 00:00:00.27] Docker container d4c44fb2f273 ready
+[testcontainers.org 00:00:02.29] Docker container d3f390c86007 created
+[testcontainers.org 00:00:02.29] Start Docker container d3f390c86007
+[testcontainers.org 00:00:02.38] Wait for Docker container d3f390c86007 to complete readiness checks
+[testcontainers.org 00:00:02.38] Execute "/bin/sh -c find /opt/mssql-tools*/bin/sqlcmd -type f -print -quit" at Docker container d3f390c86007
+[testcontainers.org 00:00:02.42] Execute "/opt/mssql-tools18/bin/sqlcmd -C -Q SELECT 1;" at Docker container d3f390c86007
+[testcontainers.org 00:00:04.97] Docker container d3f390c86007 ready
+EF Container started: Server=127.0.0.1,32872;Database=master;User Id=sa;Password=YourStrong@Passw0rd;TrustServerCertificate=True
+Starting NHibernate SQL Server container...
+[testcontainers.org 00:00:05.17] Docker container 2176b21c1c68 created
+[testcontainers.org 00:00:05.18] Start Docker container 2176b21c1c68
+[testcontainers.org 00:00:05.25] Wait for Docker container 2176b21c1c68 to complete readiness checks
+[testcontainers.org 00:00:05.25] Execute "/bin/sh -c find /opt/mssql-tools*/bin/sqlcmd -type f -print -quit" at Docker container 2176b21c1c68
+[testcontainers.org 00:00:05.29] Execute "/opt/mssql-tools18/bin/sqlcmd -C -Q SELECT 1;" at Docker container 2176b21c1c68
+[testcontainers.org 00:00:07.85] Docker container 2176b21c1c68 ready
+NH Container started: Server=127.0.0.1,32873;Database=master;User Id=sa;Password=YourStrong@Passw0rd;TrustServerCertificate=True
+Starting Dapper SQL Server container...
+[testcontainers.org 00:00:07.95] Docker container 9d016ddca8d0 created
+[testcontainers.org 00:00:07.95] Start Docker container 9d016ddca8d0
+[testcontainers.org 00:00:08.02] Wait for Docker container 9d016ddca8d0 to complete readiness checks
+[testcontainers.org 00:00:08.02] Execute "/bin/sh -c find /opt/mssql-tools*/bin/sqlcmd -type f -print -quit" at Docker container 9d016ddca8d0
+[testcontainers.org 00:00:08.06] Execute "/opt/mssql-tools18/bin/sqlcmd -C -Q SELECT 1;" at Docker container 9d016ddca8d0
+[testcontainers.org 00:00:10.62] Docker container 9d016ddca8d0 ready
+Dapper Container started: Server=127.0.0.1,32874;Database=master;User Id=sa;Password=YourStrong@Passw0rd;TrustServerCertificate=True
+Setting up Entity Framework...
+
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.InvalidOperationException: No service for type 'Microsoft.EntityFrameworkCore.IDbContextFactory`1[ORM_Benchmarks.EF.EFDbContext]' has been registered.
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at ORM_Benchmarks.EF.EFDbContextFactory..ctor(String connectionString) in /home/cmarshall/source/repos/ORM-Fun/ORM_Benchmarks/EF/EFDbContextFactory.cs:line 18
+   at MyBenchmarks.EFVsNHibernate.Setup() in /home/cmarshall/source/repos/ORM-Fun/ORM_Benchmarks/Program.cs:line 106
+   at BenchmarkDotNet.Helpers.AwaitHelper.GetResult(Task task)
+   at BenchmarkDotNet.Autogenerated.Runnable_4.<.ctor>b__3_0() in /home/cmarshall/source/repos/ORM-Fun/ORM_Benchmarks/bin/Release/net10.0/ORM_Benchmarks-DefaultJob-1/ORM_Benchmarks-DefaultJob-1.notcs:line 980
+   at BenchmarkDotNet.Engines.EngineFactory.CreateReadyToRun(EngineParameters engineParameters)
+   at BenchmarkDotNet.Autogenerated.Runnable_4.Run(IHost host, String benchmarkName) in /home/cmarshall/source/repos/ORM-Fun/ORM_Benchmarks/bin/Release/net10.0/ORM_Benchmarks-DefaultJob-1/ORM_Benchmarks-DefaultJob-1.notcs:line 964
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   --- End of inner exception stack trace ---
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at BenchmarkDotNet.Autogenerated.UniqueProgramName.AfterAssemblyLoadingAttached(String[] args) in /home/cmarshall/source/repos/ORM-Fun/ORM_Benchmarks/bin/Release/net10.0/ORM_Benchmarks-DefaultJob-1/ORM_Benchmarks-DefaultJob-1.notcs:line 57
+// AfterAll
+No Workload Results were obtained from the run.
+// Benchmark Process 133714 has exited with code 255.
+
+// ** Remained 4 (44.4%) benchmark(s) to run. Estimated finish 2025-11-24 2:10 (0h 0m from now) **
+// **************************
+// Benchmark: EFVsNHibernate.Dapper_RetrieveById: DefaultJob
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet ORM_Benchmarks-DefaultJob-1.dll --anonymousPipes 157 158 --benchmarkName MyBenchmarks.EFVsNHibernate.Dapper_RetrieveById --job Default --benchmarkId 5 in /home/cmarshall/source/repos/ORM-Fun/ORM_Benchmarks/bin/Release/net10.0/ORM_Benchmarks-DefaultJob-1/bin/Release/net10.0
+// Failed to set up high priority (Permission denied). In order to run benchmarks with high priority, make sure you have the right permissions.
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.15.6
+// Runtime=.NET 10.0.0 (10.0.0, 10.0.25.52411), X64 RyuJIT x86-64-v3
+// GC=Concurrent Workstation
+// HardwareIntrinsics=AVX2+BMI1+BMI2+F16C+FMA+LZCNT+MOVBE,AVX,SSE3+SSSE3+SSE4.1+SSE4.2+POPCNT,X86Base+SSE+SSE2,AES+PCLMUL,AvxVnni,SERIALIZE VectorSize=256
+// Job: DefaultJob
+
+Starting Entity Framework SQL Server container...
+[testcontainers.org 00:00:00.05] Connected to Docker:
+  Host: unix:///var/run/docker.sock
+  Server Version: 29.0.1
+  Kernel Version: 6.14.0-35-generic
+  API Version: 1.52
+  Operating System: Ubuntu 24.04.3 LTS
+  Total Memory: 62.60 GB
+[testcontainers.org 00:00:00.11] Docker container a111f0c61c2a created
+[testcontainers.org 00:00:00.12] Start Docker container a111f0c61c2a
+[testcontainers.org 00:00:00.30] Wait for Docker container a111f0c61c2a to complete readiness checks
+[testcontainers.org 00:00:00.30] Docker container a111f0c61c2a ready
+[testcontainers.org 00:00:02.32] Docker container c57f922b6de4 created
+[testcontainers.org 00:00:02.32] Start Docker container c57f922b6de4
+[testcontainers.org 00:00:02.41] Wait for Docker container c57f922b6de4 to complete readiness checks
+[testcontainers.org 00:00:02.41] Execute "/bin/sh -c find /opt/mssql-tools*/bin/sqlcmd -type f -print -quit" at Docker container c57f922b6de4
+[testcontainers.org 00:00:02.46] Execute "/opt/mssql-tools18/bin/sqlcmd -C -Q SELECT 1;" at Docker container c57f922b6de4
+[testcontainers.org 00:00:05.01] Docker container c57f922b6de4 ready
+EF Container started: Server=127.0.0.1,32876;Database=master;User Id=sa;Password=YourStrong@Passw0rd;TrustServerCertificate=True
+Starting NHibernate SQL Server container...
+[testcontainers.org 00:00:05.21] Docker container 0356ed626784 created
+[testcontainers.org 00:00:05.21] Start Docker container 0356ed626784
+[testcontainers.org 00:00:05.29] Wait for Docker container 0356ed626784 to complete readiness checks
+[testcontainers.org 00:00:05.29] Execute "/bin/sh -c find /opt/mssql-tools*/bin/sqlcmd -type f -print -quit" at Docker container 0356ed626784
+[testcontainers.org 00:00:05.32] Execute "/opt/mssql-tools18/bin/sqlcmd -C -Q SELECT 1;" at Docker container 0356ed626784
+[testcontainers.org 00:00:07.87] Docker container 0356ed626784 ready
+NH Container started: Server=127.0.0.1,32877;Database=master;User Id=sa;Password=YourStrong@Passw0rd;TrustServerCertificate=True
+Starting Dapper SQL Server container...
+[testcontainers.org 00:00:07.98] Docker container 08dd19ec2ef7 created
+[testcontainers.org 00:00:07.98] Start Docker container 08dd19ec2ef7
+[testcontainers.org 00:00:08.07] Wait for Docker container 08dd19ec2ef7 to complete readiness checks
+[testcontainers.org 00:00:08.07] Execute "/bin/sh -c find /opt/mssql-tools*/bin/sqlcmd -type f -print -quit" at Docker container 08dd19ec2ef7
+[testcontainers.org 00:00:08.11] Execute "/opt/mssql-tools18/bin/sqlcmd -C -Q SELECT 1;" at Docker container 08dd19ec2ef7
+[testcontainers.org 00:00:10.65] Docker container 08dd19ec2ef7 ready
+Dapper Container started: Server=127.0.0.1,32878;Database=master;User Id=sa;Password=YourStrong@Passw0rd;TrustServerCertificate=True
+Setting up Entity Framework...
+
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.InvalidOperationException: No service for type 'Microsoft.EntityFrameworkCore.IDbContextFactory`1[ORM_Benchmarks.EF.EFDbContext]' has been registered.
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at ORM_Benchmarks.EF.EFDbContextFactory..ctor(String connectionString) in /home/cmarshall/source/repos/ORM-Fun/ORM_Benchmarks/EF/EFDbContextFactory.cs:line 18
+   at MyBenchmarks.EFVsNHibernate.Setup() in /home/cmarshall/source/repos/ORM-Fun/ORM_Benchmarks/Program.cs:line 106
+   at BenchmarkDotNet.Helpers.AwaitHelper.GetResult(Task task)
+   at BenchmarkDotNet.Autogenerated.Runnable_5.<.ctor>b__3_0() in /home/cmarshall/source/repos/ORM-Fun/ORM_Benchmarks/bin/Release/net10.0/ORM_Benchmarks-DefaultJob-1/ORM_Benchmarks-DefaultJob-1.notcs:line 1177
+   at BenchmarkDotNet.Engines.EngineFactory.CreateReadyToRun(EngineParameters engineParameters)
+   at BenchmarkDotNet.Autogenerated.Runnable_5.Run(IHost host, String benchmarkName) in /home/cmarshall/source/repos/ORM-Fun/ORM_Benchmarks/bin/Release/net10.0/ORM_Benchmarks-DefaultJob-1/ORM_Benchmarks-DefaultJob-1.notcs:line 1161
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   --- End of inner exception stack trace ---
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at BenchmarkDotNet.Autogenerated.UniqueProgramName.AfterAssemblyLoadingAttached(String[] args) in /home/cmarshall/source/repos/ORM-Fun/ORM_Benchmarks/bin/Release/net10.0/ORM_Benchmarks-DefaultJob-1/ORM_Benchmarks-DefaultJob-1.notcs:line 57
+// AfterAll
+No Workload Results were obtained from the run.
+// Benchmark Process 135621 has exited with code 255.
+
+// ** Remained 3 (33.3%) benchmark(s) to run. Estimated finish 2025-11-24 2:10 (0h 0m from now) **
+// **************************
+// Benchmark: EFVsNHibernate.EF_AddRecord: DefaultJob
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet ORM_Benchmarks-DefaultJob-1.dll --anonymousPipes 157 158 --benchmarkName MyBenchmarks.EFVsNHibernate.EF_AddRecord --job Default --benchmarkId 6 in /home/cmarshall/source/repos/ORM-Fun/ORM_Benchmarks/bin/Release/net10.0/ORM_Benchmarks-DefaultJob-1/bin/Release/net10.0
+// Failed to set up high priority (Permission denied). In order to run benchmarks with high priority, make sure you have the right permissions.
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.15.6
+// Runtime=.NET 10.0.0 (10.0.0, 10.0.25.52411), X64 RyuJIT x86-64-v3
+// GC=Concurrent Workstation
+// HardwareIntrinsics=AVX2+BMI1+BMI2+F16C+FMA+LZCNT+MOVBE,AVX,SSE3+SSSE3+SSE4.1+SSE4.2+POPCNT,X86Base+SSE+SSE2,AES+PCLMUL,AvxVnni,SERIALIZE VectorSize=256
+// Job: DefaultJob
+
+Starting Entity Framework SQL Server container...
+[testcontainers.org 00:00:00.05] Connected to Docker:
+  Host: unix:///var/run/docker.sock
+  Server Version: 29.0.1
+  Kernel Version: 6.14.0-35-generic
+  API Version: 1.52
+  Operating System: Ubuntu 24.04.3 LTS
+  Total Memory: 62.60 GB
+[testcontainers.org 00:00:00.10] Docker container 56b24184a0dc created
+[testcontainers.org 00:00:00.11] Start Docker container 56b24184a0dc
+[testcontainers.org 00:00:00.31] Wait for Docker container 56b24184a0dc to complete readiness checks
+[testcontainers.org 00:00:00.31] Docker container 56b24184a0dc ready
+[testcontainers.org 00:00:02.34] Docker container 7caa9f9dc6fd created
+[testcontainers.org 00:00:02.34] Start Docker container 7caa9f9dc6fd
+[testcontainers.org 00:00:02.41] Wait for Docker container 7caa9f9dc6fd to complete readiness checks
+[testcontainers.org 00:00:02.41] Execute "/bin/sh -c find /opt/mssql-tools*/bin/sqlcmd -type f -print -quit" at Docker container 7caa9f9dc6fd
+[testcontainers.org 00:00:02.46] Execute "/opt/mssql-tools18/bin/sqlcmd -C -Q SELECT 1;" at Docker container 7caa9f9dc6fd
+[testcontainers.org 00:00:05.01] Docker container 7caa9f9dc6fd ready
+EF Container started: Server=127.0.0.1,32880;Database=master;User Id=sa;Password=YourStrong@Passw0rd;TrustServerCertificate=True
+Starting NHibernate SQL Server container...
+[testcontainers.org 00:00:05.25] Docker container 576409c74175 created
+[testcontainers.org 00:00:05.25] Start Docker container 576409c74175
+[testcontainers.org 00:00:05.33] Wait for Docker container 576409c74175 to complete readiness checks
+[testcontainers.org 00:00:05.33] Execute "/bin/sh -c find /opt/mssql-tools*/bin/sqlcmd -type f -print -quit" at Docker container 576409c74175
+[testcontainers.org 00:00:05.36] Execute "/opt/mssql-tools18/bin/sqlcmd -C -Q SELECT 1;" at Docker container 576409c74175
