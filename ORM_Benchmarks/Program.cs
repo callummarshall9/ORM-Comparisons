@@ -280,7 +280,7 @@ namespace MyBenchmarks
         [Benchmark]
         public NHProduct? NHibernate_RetrieveById()
         {
-            return _nhSession!.Query<NHProduct>().FirstOrDefault(p => p.Id == 50);
+            return _nhSession!.QueryOver<NHProduct>().Where(p => p.Id == 50).SingleOrDefault();
         }
 
         [Benchmark]

@@ -8,14 +8,8 @@ BenchmarkDotNet v0.15.6, Linux Ubuntu 24.04.3 LTS (Noble Numbat)
 
 
 ```
-| Method                  | Mean       | Error    | StdDev   | Gen0   | Allocated |
-|------------------------ |-----------:|---------:|---------:|-------:|----------:|
-| EF_RetrieveAll          |   262.9 μs |  5.07 μs |  6.59 μs | 2.9297 |  64.16 KB |
-| NHibernate_RetrieveAll  |   305.7 μs |  5.61 μs | 13.77 μs | 5.8594 |  110.5 KB |
-| AdoNet_RetrieveAll      |   259.1 μs |  4.90 μs | 10.96 μs | 1.9531 |  42.73 KB |
-| EF_RetrieveById         |   106.8 μs |  3.55 μs | 10.08 μs | 0.2441 |   4.78 KB |
-| NHibernate_RetrieveById |   519.9 μs | 15.67 μs | 46.20 μs | 0.9766 |  28.47 KB |
-| AdoNet_RetrieveById     |   110.7 μs |  2.17 μs |  3.74 μs | 0.2441 |   5.95 KB |
-| EF_AddRecord            | 1,308.3 μs | 26.14 μs | 76.25 μs |      - |  14.76 KB |
-| NHibernate_AddRecord    | 1,387.6 μs | 27.49 μs | 43.60 μs |      - |  19.87 KB |
-| AdoNet_AddRecord        | 1,152.3 μs | 22.61 μs | 30.18 μs |      - |   9.48 KB |
+| Method                  | Mean     | Error    | StdDev   | Median   | Gen0   | Gen1   | Allocated |
+|------------------------ |---------:|---------:|---------:|---------:|-------:|-------:|----------:|
+| EF_RetrieveById         | 58.36 μs | 2.154 μs | 6.248 μs | 57.47 μs | 0.2441 |      - |   4.78 KB |
+| NHibernate_RetrieveById | 65.56 μs | 2.528 μs | 7.295 μs | 63.18 μs | 1.7090 | 0.1221 |  31.82 KB |
+| AdoNet_RetrieveById     | 55.62 μs | 1.089 μs | 1.663 μs | 55.42 μs | 0.2441 |      - |   5.95 KB |

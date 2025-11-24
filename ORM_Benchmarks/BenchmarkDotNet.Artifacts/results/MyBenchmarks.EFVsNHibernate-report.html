@@ -2,7 +2,7 @@
 <html lang='en'>
 <head>
 <meta charset='utf-8' />
-<title>MyBenchmarks.EFVsNHibernate-20251124-032032</title>
+<title>MyBenchmarks.EFVsNHibernate-20251124-080623</title>
 
 <style type="text/css">
 	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
@@ -22,17 +22,11 @@ BenchmarkDotNet v0.15.6, Linux Ubuntu 24.04.3 LTS (Noble Numbat)
 <pre><code></code></pre>
 
 <table>
-<thead><tr><th>Method           </th><th>Mean</th><th>Error</th><th>StdDev</th><th>Gen0</th><th>Allocated</th>
+<thead><tr><th>Method           </th><th>Mean</th><th>Error</th><th>StdDev</th><th>Median</th><th>Gen0</th><th>Gen1</th><th>Allocated</th>
 </tr>
-</thead><tbody><tr><td>EF_RetrieveAll</td><td>262.9 &mu;s</td><td>5.07 &mu;s</td><td>6.59 &mu;s</td><td>2.9297</td><td>64.16 KB</td>
-</tr><tr><td>NHibernate_RetrieveAll</td><td>305.7 &mu;s</td><td>5.61 &mu;s</td><td>13.77 &mu;s</td><td>5.8594</td><td>110.5 KB</td>
-</tr><tr><td>AdoNet_RetrieveAll</td><td>259.1 &mu;s</td><td>4.90 &mu;s</td><td>10.96 &mu;s</td><td>1.9531</td><td>42.73 KB</td>
-</tr><tr><td>EF_RetrieveById</td><td>106.8 &mu;s</td><td>3.55 &mu;s</td><td>10.08 &mu;s</td><td>0.2441</td><td>4.78 KB</td>
-</tr><tr><td>NHibernate_RetrieveById</td><td>519.9 &mu;s</td><td>15.67 &mu;s</td><td>46.20 &mu;s</td><td>0.9766</td><td>28.47 KB</td>
-</tr><tr><td>AdoNet_RetrieveById</td><td>110.7 &mu;s</td><td>2.17 &mu;s</td><td>3.74 &mu;s</td><td>0.2441</td><td>5.95 KB</td>
-</tr><tr><td>EF_AddRecord</td><td>1,308.3 &mu;s</td><td>26.14 &mu;s</td><td>76.25 &mu;s</td><td>-</td><td>14.76 KB</td>
-</tr><tr><td>NHibernate_AddRecord</td><td>1,387.6 &mu;s</td><td>27.49 &mu;s</td><td>43.60 &mu;s</td><td>-</td><td>19.87 KB</td>
-</tr><tr><td>AdoNet_AddRecord</td><td>1,152.3 &mu;s</td><td>22.61 &mu;s</td><td>30.18 &mu;s</td><td>-</td><td>9.48 KB</td>
+</thead><tbody><tr><td>EF_RetrieveById</td><td>58.36 &mu;s</td><td>2.154 &mu;s</td><td>6.248 &mu;s</td><td>57.47 &mu;s</td><td>0.2441</td><td>-</td><td>4.78 KB</td>
+</tr><tr><td>NHibernate_RetrieveById</td><td>65.56 &mu;s</td><td>2.528 &mu;s</td><td>7.295 &mu;s</td><td>63.18 &mu;s</td><td>1.7090</td><td>0.1221</td><td>31.82 KB</td>
+</tr><tr><td>AdoNet_RetrieveById</td><td>55.62 &mu;s</td><td>1.089 &mu;s</td><td>1.663 &mu;s</td><td>55.42 &mu;s</td><td>0.2441</td><td>-</td><td>5.95 KB</td>
 </tr></tbody></table>
 </body>
 </html>
