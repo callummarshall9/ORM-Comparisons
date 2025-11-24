@@ -39,6 +39,9 @@ public static class NHibernateHelper
 
                 var mapper = new ModelMapper();
                 mapper.AddMapping<ProductMap>();
+                mapper.AddMapping<ReviewMap>();
+                mapper.AddMapping<CategoryMap>();
+                mapper.AddMapping<ProductImageMap>();
                 HbmMapping mapping = mapper.CompileMappingForAllExplicitlyAddedEntities();
                 configuration.AddMapping(mapping);
 

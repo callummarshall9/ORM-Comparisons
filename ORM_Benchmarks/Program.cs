@@ -6,10 +6,18 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Data.SqlClient;
 using ORM_Benchmarks.EF;
 using NHibernate.Linq;
+using NHibernate.Criterion;
 using Testcontainers.MsSql;
 using Dapper;
 using EFProduct = ORM_Benchmarks.EF.Product;
 using NHProduct = ORM_Benchmarks.NHibernate.Product;
+using EFReview = ORM_Benchmarks.EF.Review;
+using EFCategory = ORM_Benchmarks.EF.Category;
+using EFProductImage = ORM_Benchmarks.EF.ProductImage;
+using NHReview = ORM_Benchmarks.NHibernate.Review;
+using NHCategory = ORM_Benchmarks.NHibernate.Category;
+using NHProductImage = ORM_Benchmarks.NHibernate.ProductImage;
+using NHibernate;
 
 namespace MyBenchmarks
 {
@@ -43,6 +51,15 @@ namespace MyBenchmarks
         
         private static readonly Func<EFDbContext, int, EFProduct?> GetProductById =
             EF.CompileQuery((EFDbContext ctx, int id) => ctx.Products.AsNoTracking().FirstOrDefault(p => p.Id == id));
+
+        private static readonly Func<EFDbContext, IAsyncEnumerable<EFProduct>> GetAllProductsWithIncludes =
+            EF.CompileAsyncQuery((EFDbContext ctx) => 
+                ctx.Products
+                    .Include(p => p.Reviews)
+                    .Include(p => p.Categories)
+                    .Include(p => p.Images)
+                    .AsSplitQuery()
+                    .AsNoTracking());
 
         [GlobalSetup]
         public async Task Setup()
@@ -119,16 +136,51 @@ namespace MyBenchmarks
             var efProducts = new List<EFProduct>();
             for (int i = 1; i <= RecordCount; i++)
             {
-                efProducts.Add(new EFProduct
+                var product = new EFProduct
                 {
                     Name = $"Product {i}",
                     Price = i * 10.5m,
                     Description = $"Description for product {i}"
-                });
+                };
+                
+                // Add reviews (3 per product)
+                for (int j = 1; j <= 3; j++)
+                {
+                    product.Reviews.Add(new EFReview
+                    {
+                        ReviewerName = $"Reviewer {j}",
+                        Rating = (j % 5) + 1,
+                        Comment = $"Review comment {j} for product {i}",
+                        CreatedDate = DateTime.Now.AddDays(-j)
+                    });
+                }
+                
+                // Add categories (2 per product)
+                for (int k = 1; k <= 2; k++)
+                {
+                    product.Categories.Add(new EFCategory
+                    {
+                        Name = $"Category {k}",
+                        Description = $"Category {k} description"
+                    });
+                }
+                
+                // Add images (4 per product)
+                for (int m = 1; m <= 4; m++)
+                {
+                    product.Images.Add(new EFProductImage
+                    {
+                        Url = $"https://example.com/product{i}_image{m}.jpg",
+                        AltText = $"Product {i} Image {m}",
+                        SortOrder = m
+                    });
+                }
+                
+                efProducts.Add(product);
             }
             _efContext.Products.AddRange(efProducts);
             _efContext.SaveChanges();
-            Console.WriteLine($"Seeded {RecordCount} products for EF");
+            Console.WriteLine($"Seeded {RecordCount} products with child data for EF");
 
             // Setup NHibernate
             Console.WriteLine("Setting up NHibernate...");
@@ -139,14 +191,45 @@ namespace MyBenchmarks
             {
                 using var tx = tempSession.BeginTransaction();
                 
-                // Drop and create table
+                // Drop and create tables
                 tempSession.CreateSQLQuery(@"
+                    IF OBJECT_ID('Reviews', 'U') IS NOT NULL DROP TABLE Reviews;
+                    IF OBJECT_ID('Categories', 'U') IS NOT NULL DROP TABLE Categories;
+                    IF OBJECT_ID('ProductImages', 'U') IS NOT NULL DROP TABLE ProductImages;
                     IF OBJECT_ID('Products', 'U') IS NOT NULL DROP TABLE Products;
+                    
                     CREATE TABLE Products (
                         Id INT IDENTITY(1,1) PRIMARY KEY,
                         Name NVARCHAR(200),
                         Price DECIMAL(18,2),
                         Description NVARCHAR(MAX)
+                    );
+                    
+                    CREATE TABLE Reviews (
+                        Id INT IDENTITY(1,1) PRIMARY KEY,
+                        ProductId INT NOT NULL,
+                        ReviewerName NVARCHAR(100),
+                        Rating INT,
+                        Comment NVARCHAR(1000),
+                        CreatedDate DATETIME,
+                        FOREIGN KEY (ProductId) REFERENCES Products(Id) ON DELETE CASCADE
+                    );
+                    
+                    CREATE TABLE Categories (
+                        Id INT IDENTITY(1,1) PRIMARY KEY,
+                        ProductId INT NOT NULL,
+                        Name NVARCHAR(100),
+                        Description NVARCHAR(MAX),
+                        FOREIGN KEY (ProductId) REFERENCES Products(Id) ON DELETE CASCADE
+                    );
+                    
+                    CREATE TABLE ProductImages (
+                        Id INT IDENTITY(1,1) PRIMARY KEY,
+                        ProductId INT NOT NULL,
+                        Url NVARCHAR(500),
+                        AltText NVARCHAR(200),
+                        SortOrder INT,
+                        FOREIGN KEY (ProductId) REFERENCES Products(Id) ON DELETE CASCADE
                     );
                 ").ExecuteUpdate();
                 
@@ -157,16 +240,57 @@ namespace MyBenchmarks
             {
                 for (int i = 1; i <= RecordCount; i++)
                 {
-                    _nhSession.Save(new NHProduct
+                    var product = new NHProduct
                     {
                         Name = $"Product {i}",
                         Price = i * 10.5m,
                         Description = $"Description for product {i}"
-                    });
+                    };
+                    
+                    // Add reviews (3 per product)
+                    for (int j = 1; j <= 3; j++)
+                    {
+                        var review = new NHReview
+                        {
+                            Product = product,
+                            ReviewerName = $"Reviewer {j}",
+                            Rating = (j % 5) + 1,
+                            Comment = $"Review comment {j} for product {i}",
+                            CreatedDate = DateTime.Now.AddDays(-j)
+                        };
+                        product.Reviews.Add(review);
+                    }
+                    
+                    // Add categories (2 per product)
+                    for (int k = 1; k <= 2; k++)
+                    {
+                        var category = new NHCategory
+                        {
+                            Product = product,
+                            Name = $"Category {k}",
+                            Description = $"Category {k} description"
+                        };
+                        product.Categories.Add(category);
+                    }
+                    
+                    // Add images (4 per product)
+                    for (int m = 1; m <= 4; m++)
+                    {
+                        var image = new NHProductImage
+                        {
+                            Product = product,
+                            Url = $"https://example.com/product{i}_image{m}.jpg",
+                            AltText = $"Product {i} Image {m}",
+                            SortOrder = m
+                        };
+                        product.Images.Add(image);
+                    }
+                    
+                    _nhSession.Save(product);
                 }
                 tx.Commit();
             }
-            Console.WriteLine($"Seeded {RecordCount} products for NHibernate");
+            Console.WriteLine($"Seeded {RecordCount} products with child data for NHibernate");
 
             // Setup Dapper
             Console.WriteLine("Setting up Dapper...");
@@ -308,6 +432,33 @@ namespace MyBenchmarks
         }
 
         [Benchmark]
+        public async Task<List<EFProduct>> EF_RetrieveAllWithIncludes()
+        {
+            using var context = _efContextFactory!.CreateDbContext();
+            return await GetAllProductsWithIncludes(context).ToListAsync();
+        }
+
+        [Benchmark]
+        public async Task<IList<NHProduct?>> NHibernate_RetrieveAllWithIncludes()
+        {
+            // NHibernate QueryOver with Fetch for eager loading
+            // Using Future queries to batch multiple queries efficiently
+            NHProduct? productAlias = null;
+            NHReview? reviewAlias = null;
+            NHCategory? categoryAlias = null;
+            NHProductImage? imageAlias = null;
+            
+            var productsWithReviews = await _nhSession!.QueryOver(() => productAlias)
+                .JoinAlias(() => productAlias!.Reviews, () => reviewAlias)
+                .JoinAlias(() => productAlias!.Categories, () => categoryAlias)
+                .JoinAlias(() => productAlias!.Images, () => imageAlias)
+                .ListAsync();
+
+            // Trigger execution and return results
+            return productsWithReviews;
+        }
+
+        [Benchmark]
         public void EF_AddRecord()
         {
             int insertedId;
@@ -341,10 +492,9 @@ namespace MyBenchmarks
         {
             int insertedId;
             
-            // Add record using NHibernate
+            // Add record using NHibernate without explicit transaction
             using (var session = ORM_Benchmarks.NHibernate.NHibernateHelper.SessionFactory.OpenSession())
             {
-                using var tx = session.BeginTransaction();
                 var product = new NHProduct
                 {
                     Name = "New Product",
@@ -352,7 +502,7 @@ namespace MyBenchmarks
                     Description = "A new product"
                 };
                 session.Save(product);
-                tx.Commit();
+                session.Flush(); // Forces immediate write to database
                 insertedId = product.Id;
             }
             
